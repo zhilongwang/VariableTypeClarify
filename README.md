@@ -12,7 +12,7 @@ To Clarify variable type in bianry through machine learning.
    
    ```   
    gcc -g3 -o <binary> <source code>
-   objdump --dwarf=decodedline <binary>
+   objdump --dwarf=info <binary>
    ```
    
  
