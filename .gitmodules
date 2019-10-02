@@ -1,6 +1,3 @@
-[submodule "binutils-gdb"]
-	path = binutils-gdb
-	url = git://sourceware.org/git/binutils-gdb.git
 [submodule "pyelftools"]
 	path = pyelftools
 	url = https://github.com/eliben/pyelftools.git
