@@ -24,5 +24,4 @@ label: int
 40 88 d6 	movb	%dl, %sil
 48 8b 4d a8 	movq	-88(%rbp), %rcx
 40 88 71 03 	movb	%sil, 3(%rcx)
-
-label: char *
+label: char
