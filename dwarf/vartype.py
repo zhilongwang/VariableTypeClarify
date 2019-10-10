@@ -55,7 +55,7 @@ class ElfDwarf:
             # starting point for all DWARF-based processing in pyelftools.
             self.dwarfinfo = elffile.get_dwarf_info()
         
-            self.call_frame_information_entries = self.dwarfinfo.CFI_entries()  
+            #self.call_frame_information_entries = self.dwarfinfo.CFI_entries()  
             
 
             for CU in self.dwarfinfo.iter_CUs():
@@ -69,7 +69,7 @@ class ElfDwarf:
 
                 self.process_compile_unit(self.dwarfinfo, elffile, CU)
 
-        print("Global Variable[%d]:",len(self.global_var))
+        print("Global Variable[%d]:"  % len(self.global_var))
         for var in self.global_var :
             print("\tname:%s, address:%x, type:%s, size: %d" % (var["name"],var["address"],var["type_name"],var["size"]))
 
@@ -106,7 +106,8 @@ class ElfDwarf:
         for DIE in compile_unit.iter_DIEs():        
             self.process_die(DIE, structs, compile_unit)
 
-    def process_die(self, die, structs, compile_unit):    
+    def process_die(self, die, structs, compile_unit):   
+        
         if die.tag == 'DW_TAG_subprogram':
             self.process_subprogram(die, structs, compile_unit)
         elif die.tag == 'DW_TAG_variable' and 'DW_AT_external' in die.attributes:
@@ -147,7 +148,7 @@ class ElfDwarf:
     def process_subprogram(self, subprogram_die, structs, compile_unit):
 
         # Print name, start_address and DW_AT_frame_base of the current function
-        print(subprogram_die)
+        # print(subprogram_die)
         self.functions.append({})
         if 'DW_AT_name' in subprogram_die.attributes:
             self.functions[-1]["name"] = subprogram_die.attributes['DW_AT_name'].value
@@ -214,7 +215,7 @@ class ElfDwarf:
             
             return
             
-        print(dw_at_frame_base)
+        # print(dw_at_frame_base)
         if self.attribute_has_location_list(dw_at_frame_base):
             if dw_at_frame_base.form == 'DW_FORM_exprloc':
                 print(subprogram_die.attributes['DW_AT_frame_base'].value)
@@ -254,6 +255,7 @@ class ElfDwarf:
             # Print names of all variables that are children of the current DIE (the current function)
             for child in subprogram_die.iter_children():
                 if child.tag == 'DW_TAG_variable' or child.tag == 'DW_TAG_formal_parameter' :
+                    print(child)
                     self.process_subprogram_variable(child, structs, compile_unit)
 
 
