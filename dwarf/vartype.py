@@ -28,6 +28,7 @@ class ElfDwarf:
     """
     def __init__(self,elf_file_path):
         self.elf_file_path = elf_file_path
+        self.result_file_path = self.elf_file_path + ".type"
         self.base_type_map = {}
         self.addr2type_map = {}
         self.compile_unit_base_types = {}
@@ -69,16 +70,31 @@ class ElfDwarf:
 
                 self.process_compile_unit(self.dwarfinfo, elffile, CU)
 
-        print("Global Variable[%d]:"  % len(self.global_var))
-        for var in self.global_var :
-            print("\tname:%s, address:%x, type:%s, size: %d" % (var["name"],var["address"],var["type_name"],var["size"]))
+        with open(self.result_file_path, 'w') as typefile:
 
-        for fun in self.functions:
+            typefile.write("GOB\n");
+            for var in self.global_var :
+                typefile.write("VAR\n")
+                typefile.write("\t%s %x %s %x\n" % (var["name"],var["address"],var["type_name"],var["size"]))
+            for fun in self.functions:
+                typefile.write("FUN\n")
+                typefile.write("\t%s\n" % fun["name"])
+                variables = fun["stack_variables"]
+                for var in variables:
+                    typefile.write("VAR\n")
+                    typefile.write("\t%s %x %s %d\n" % (var["name"],var["dw_at_location_offset"],var["type_name"],var["size"]))
+                
+        
+        # print("Global Variable[%d]:"  % len(self.global_var))
+        # for var in self.global_var :
+        #     print("\tname:%s, address:%x, type:%s, size: %d" % (var["name"],var["address"],var["type_name"],var["size"]))
+
+        # for fun in self.functions:
             
-            print("Function: %s" % fun["name"])
-            variables = fun["stack_variables"]
-            for var in variables:
-                print("\tname:%s, offset:%x, type:%s, size: %d" % (var["name"],var["dw_at_location_offset"],var["type_name"],var["size"]))
+        #     print("Function: %s" % fun["name"])
+        #     variables = fun["stack_variables"]
+        #     for var in variables:
+        #         print("\tname:%s, offset:%x, type:%s, size: %d" % (var["name"],var["dw_at_location_offset"],var["type_name"],var["size"]))
             
 
                 # # The first DIE in each compile unit describes it.
