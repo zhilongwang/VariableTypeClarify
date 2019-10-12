@@ -19,5 +19,5 @@ config['save_path'] = 'model/test/'
 config['input'] = os.getcwd() + '/data/rawdata.txt'
 config['valid'] = os.getcwd() + '/data/rawdata.txt'
 config['class_num'] = 4
-config['instruction_number'] = 20
+config['instruction_number'] = 10
 config['instruction_length'] = 10

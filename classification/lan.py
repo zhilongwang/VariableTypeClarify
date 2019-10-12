@@ -58,6 +58,7 @@ class VariableType(tf.keras.Model):
         self.dropout = dropout
 
         with tf.GradientTape() as tape:
+            inputs_embedded = tf.cast(inputs_embedded, dtype=self._dtype)
             outputs = self.rnn(inputs_embedded)
             attention_r = self.attention(outputs)
             logits = self.output_layer(attention_r)
@@ -85,45 +86,6 @@ class VariableType(tf.keras.Model):
     def attention(self, inputs):
         return tf.reshape(tf.matmul(tf.reshape(tf.nn.softmax(tf.reshape(tf.matmul(tf.reshape(tf.tanh(inputs), [-1, self.hidden_units]),self.attention_context),[self.batch_size, -1])),[self.batch_size,1, -1]), inputs),[self.batch_size, self.hidden_units])
 
-    #@tf.function(input_signature=[tf.TensorSpec(shape=[config['batch_size'], config['instruction_number'], config['instruction_length']], dtype=tf.float32), tf.TensorSpec(shape=[config['batch_size']], dtype=tf.int32),tf.TensorSpec(shape=None,dtype=tf.bool), tf.TensorSpec(shape=None,dtype=tf.float32)])
-    def without_keras(self, X_train, y_train, train, dropout):     
-        self.dropout = dropout
-
-        with tf.GradientTape() as tape:
-            outputs = self.rnn(X_train)
-            attention_r = self.attention(outputs)
-            output_layer = Dense(self.class_num)
-            logits = output_layer(attention_r)
-            current_loss = self.cal_loss(logits, y_train)
-            pred = self.pred(logits)
-
-        def cal_grad():
-            self._variables = [self.attention_context]
-            grads = tape.gradient(current_loss, self._variables)
-            clip_gradients, _ = tf.clip_by_global_norm(grads, self.max_gradient_norm)
-            self.opt.apply_gradients(zip(clip_gradients, self._variables))
-            return logits, current_loss, pred
-      
-        def cal_not_grad():
-            return logits, current_loss, pred
-    
-        return tf.cond(train, true_fn = cal_grad, false_fn = cal_not_grad)
-
-    def rnn(self, inputs_embedded):
-        cell_forward = RNN([self.build_single_cell() ])
-        outputs, state = cell_forward(inputs_embedded)
-        return outputs
-
-    def build_single_cell(self):
-        cell_type = LSTMCell
-        if (self.cell_type.lower() == 'gru'):
-            cell_type = GRUCell
-        elif (self.cell_type.lower() == 'rnn'):
-            cell_type = SimpleRNNCell
-        cell = cell_type(self.hidden_units)
-        return cell
-
-
 def test(img, lab, path):
     _model = tf.saved_model.load(path)
     acc_avg = tf.metrics.Accuracy()
@@ -149,11 +111,10 @@ def train(train_images, train_labels, test_img, test_lab, path):
   test_loss_results = []
   test_accuracy_results = []
   for epoch in range(config['max_epochs']):
-    train_ds = tf.data.Dataset.from_tensor_slices((train_images, train_labels)).shuffle(1000, seed=epoch*(2612)).batch(config['batch_size'],drop_remainder=True)
+    train_ds = tf.data.Dataset.from_tensor_slices((train_images, train_labels)).shuffle(1000).batch(config['batch_size'],drop_remainder=True)
     acc_avg = tf.metrics.Accuracy()
     loss_avg = tf.metrics.Mean()
     for inputs, outputs in train_ds:
-        print(inputs, outputs)
         logits,loss,pred = vt_model(inputs, outputs, True , config['dropout_prob'])
         loss_avg(loss)
         acc_avg(pred, outputs)
@@ -179,5 +140,4 @@ def readData():
     return train_seqs, train_labels, test_seqs, test_labels 
 
 train_seqs, train_labels, test_seqs, test_labels = readData()
-print(train_seqs, train_labels)
 train(train_seqs, train_labels, test_seqs, test_labels, config['save_path'])

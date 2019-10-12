@@ -48,7 +48,7 @@ def padding_feature(seqs, length, sub_length, end_token):
     max_length = max_length if max_length > len(newseq) else len(newseq)
     if length > len(newseq):
       newseq.extend([''.join([end_token for _ in range(sub_length)]) for _ in range(length - len(newseq))])
-    newseqs.append([newseq])
+    newseqs.append([list(map(int, s)) for s in newseq])
   print('max instruction numbers:', max_length, ';max length of instruction:', max_sub_length)
   assert max_length <= length
   assert max_sub_length <= sub_length
