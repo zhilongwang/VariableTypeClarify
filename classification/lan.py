@@ -54,7 +54,7 @@ class VariableType(tf.keras.Model):
             self.opt = tf.optimizers.SGD(learning_rate=self.learning_rate)
         return self.opt
 
-    def call(self, inputs_embedded, y_train, training=False, dropout=0.):
+    def call(self, inputs_embedded, y_train, training=True, dropout=0.):
         self.dropout = dropout
 
         with tf.GradientTape() as tape:
@@ -62,23 +62,29 @@ class VariableType(tf.keras.Model):
             outputs = self.rnn(inputs_embedded)
             attention_r = self.attention(outputs)
             logits = self.output_layer(attention_r)
-            current_loss = self.cal_loss(logits, y_train)
+            self.loss = self.cal_loss(logits, y_train)
             pred = self.pred(logits)
-
+            
         def cal_grad():
-            self._variables = [self.attention_context]
-            grads = tape.gradient(current_loss, self._variables)
+            print('calculate gradient...')
+            self._variables = self.trainable_variables
+            grads = tape.gradient(self.loss, self._variables)
             clip_gradients, _ = tf.clip_by_global_norm(grads, self.max_gradient_norm)
             self.opt.apply_gradients(zip(clip_gradients, self._variables))
-            return logits, current_loss, pred
+            print(logits, self.loss, pred)
+            return logits, self.loss, pred
       
         def cal_not_grad():
-            return logits, current_loss, pred
+            print('return...')
+            return logits, self.loss, pred
     
         return tf.cond(train, true_fn = cal_grad, false_fn = cal_not_grad)
 
     def pred(self, logits):
         return tf.argmax(tf.nn.softmax(logits),1)
+
+    def metircs(self):
+        return keras.metrics.SparseCategoricalAccuracy()
 
     def cal_loss(self, logits, y_true):
         return tf.nn.sparse_softmax_cross_entropy_with_logits(logits = logits,labels = y_true)        
@@ -87,7 +93,7 @@ class VariableType(tf.keras.Model):
         return tf.reshape(tf.matmul(tf.reshape(tf.nn.softmax(tf.reshape(tf.matmul(tf.reshape(tf.tanh(inputs), [-1, self.hidden_units]),self.attention_context),[self.batch_size, -1])),[self.batch_size,1, -1]), inputs),[self.batch_size, self.hidden_units])
 
 def test(img, lab, path):
-    _model = tf.saved_model.load(path)
+    _model = tf.keras.models.load_model(path)
     acc_avg = tf.metrics.Accuracy()
     loss_avg = tf.metrics.Mean()
     test_ds = tf.data.Dataset.from_tensor_slices((img, lab)).shuffle(1000, seed=2612).batch(batch_size,drop_remainder=True)
@@ -101,10 +107,11 @@ def test(img, lab, path):
 def train(train_images, train_labels, test_img, test_lab, path):
   if tf.saved_model.contains_saved_model(path):
     print('load model:' + path)
-    vt_model = tf.saved_model.load(path)
+    vt_model = tf.keras.models.load_model(path)
   else:
     print('create new model')
     vt_model = VariableType()
+    #vt_model.compile(optimizer = vt_model.opt, loss= vt_model.cal_loss, metrics = [vt_model.metircs])
   time_start = time.time()
   train_loss_results = []
   train_accuracy_results = []
@@ -118,16 +125,17 @@ def train(train_images, train_labels, test_img, test_lab, path):
         logits,loss,pred = vt_model(inputs, outputs, True , config['dropout_prob'])
         loss_avg(loss)
         acc_avg(pred, outputs)
-    tf.saved_model.save(vt_model, path)
-    l, a = test(test_img, test_lab, path)
+    #vt_model.save(path)
+    #l, a = test(test_img, test_lab, path)
+    l, a = 0,1
     print('Number of Epoch = {} - Average MSE:= {:.10f} - ACC:={:.4f}; TEST Loss:={:.10f} - ACC:={:.4f}'.format(
-        epoch + 1, loss_avg.result() / train_images.shape[0], acc_avg.result(), l, a))
+        epoch + 1, loss_avg.result(), acc_avg.result(), l, a))
     test_loss_results.append(l)
     test_accuracy_results.append(a)
     train_loss_results.append(loss_avg.result())
     train_accuracy_results.append(acc_avg.result())
   time_taken = time.time() - time_start
-  tf.saved_model.save(vt_model, path)
+  vt_model.save(path)
 
   print('\nTotal time taken (in seconds): {:.2f}'.format(time_taken))
   return test_loss_results, test_accuracy_results, train_loss_results, train_accuracy_results
