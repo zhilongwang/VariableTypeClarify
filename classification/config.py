@@ -12,7 +12,7 @@ config['hidden_units'] = 128
 config['optimizer'] = 'adam'
 config['learning_rate'] = 0.003
 config['max_gradient_norm'] = 1.0
-config['max_epochs'] = 100
+config['max_epochs'] = 30
 config['dropout_prob'] = 0.
 config['save_path'] = 'model/test/'
 #TODO

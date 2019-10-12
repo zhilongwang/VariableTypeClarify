@@ -13,6 +13,12 @@ label: int
 40 88 71 03 	movb	%sil, 3(%rcx)
 label: char
 
+8b 50 14 	movl	20(%rax), %edx
+40 88 d6 	movb	%dl, %sil
+48 8b 4d a8 	movq	-88(%rbp), %rcx
+40 88 71 03 	movb	%sil, 3(%rcx)
+label: char
+
 8b 4d c8 	movl	-56(%rbp), %ecx
 8b 00 	movl	(%rax), %eax
 99 	cltd
@@ -24,4 +30,12 @@ label: int
 8b 45 c8 	movl	-56(%rbp), %eax
 83 c0 04 	addl	$4, %eax
 89 45 c8 	movl	%eax, -56(%rbp)
+label: int
+
+8b 4d c8 	movl	-56(%rbp), %ecx
+8b 00 	movl	(%rax), %eax
+99 	cltd
+be 08 00 00 00 	movl	$8, %esi
+f7 fe 	idivl	%esi
+39 d1 	cmpl	%edx, %ecx
 label: int

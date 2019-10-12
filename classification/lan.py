@@ -14,6 +14,8 @@ from tensorflow.keras.layers import Dense
 
 from config import config
 from util import utils
+import random
+#import pdb
 
 class VariableType(tf.keras.Model):
     def __init__(self):
@@ -54,98 +56,73 @@ class VariableType(tf.keras.Model):
             self.opt = tf.optimizers.SGD(learning_rate=self.learning_rate)
         return self.opt
 
-    def call(self, inputs_embedded, y_train, training=True, dropout=0.):
-        self.dropout = dropout
-
-        with tf.GradientTape() as tape:
-            inputs_embedded = tf.cast(inputs_embedded, dtype=self._dtype)
-            outputs = self.rnn(inputs_embedded)
-            attention_r = self.attention(outputs)
-            logits = self.output_layer(attention_r)
-            self.loss = self.cal_loss(logits, y_train)
-            pred = self.pred(logits)
-            
-        def cal_grad():
-            print('calculate gradient...')
-            self._variables = self.trainable_variables
-            grads = tape.gradient(self.loss, self._variables)
-            clip_gradients, _ = tf.clip_by_global_norm(grads, self.max_gradient_norm)
-            self.opt.apply_gradients(zip(clip_gradients, self._variables))
-            print(logits, self.loss, pred)
-            return logits, self.loss, pred
-      
-        def cal_not_grad():
-            print('return...')
-            return logits, self.loss, pred
-    
-        return tf.cond(train, true_fn = cal_grad, false_fn = cal_not_grad)
+    def call(self, inputs):
+        inputs_embedded = tf.cast(inputs, dtype=self._dtype)
+        outputs = self.rnn(inputs_embedded)
+        attention_r = self.attention(outputs)
+        logits = self.output_layer(attention_r)
+        return logits
 
     def pred(self, logits):
         return tf.argmax(tf.nn.softmax(logits),1)
 
-    def metircs(self):
-        return keras.metrics.SparseCategoricalAccuracy()
-
-    def cal_loss(self, logits, y_true):
-        return tf.nn.sparse_softmax_cross_entropy_with_logits(logits = logits,labels = y_true)        
-
     def attention(self, inputs):
         return tf.reshape(tf.matmul(tf.reshape(tf.nn.softmax(tf.reshape(tf.matmul(tf.reshape(tf.tanh(inputs), [-1, self.hidden_units]),self.attention_context),[self.batch_size, -1])),[self.batch_size,1, -1]), inputs),[self.batch_size, self.hidden_units])
 
-def test(img, lab, path):
-    _model = tf.keras.models.load_model(path)
-    acc_avg = tf.metrics.Accuracy()
-    loss_avg = tf.metrics.Mean()
-    test_ds = tf.data.Dataset.from_tensor_slices((img, lab)).shuffle(1000, seed=2612).batch(batch_size,drop_remainder=True)
-    for ids,(_x,_y) in test_ds.enumerate():
-      logits,loss,pred = _model(_x, _y, False, dropout = 0.)
-      loss_avg(loss)
-      acc_avg(pred, _y)
-    return loss_avg.result(), acc_avg.result()
+def test(test_img, test_lab, path):
+  vt_model = VariableType()
+  vt_model.compile(loss='sparse_categorical_crossentropy',
+              optimizer=vt_model.opt, metrics= ['accuracy'])
+  try:
+    print('loading ...')
+    vt_model.load_weights(path)
+  except:
+    return
+  test_img = tf.cast(test_img, dtype=tf.float32)
+  test_lab = tf.cast(test_lab, dtype=tf.float32) 
+  pred = vt_model.predict(test_img, batch_size=config['batch_size'])
+  print(vt_model.pred(pred), test_lab)
 
 # Initialize model using CPU
 def train(train_images, train_labels, test_img, test_lab, path):
-  if tf.saved_model.contains_saved_model(path):
-    print('load model:' + path)
-    vt_model = tf.keras.models.load_model(path)
-  else:
-    print('create new model')
-    vt_model = VariableType()
-    #vt_model.compile(optimizer = vt_model.opt, loss= vt_model.cal_loss, metrics = [vt_model.metircs])
+  vt_model = VariableType()
+  vt_model.compile(loss='sparse_categorical_crossentropy',
+              optimizer=vt_model.opt, metrics= ['accuracy'])
+  try:
+    print('loading ...')
+    vt_model.load_weights(path)
+  except:
+    pass
+  cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=path, save_weights_only=True, verbose=1)
   time_start = time.time()
-  train_loss_results = []
-  train_accuracy_results = []
-  test_loss_results = []
-  test_accuracy_results = []
-  for epoch in range(config['max_epochs']):
-    train_ds = tf.data.Dataset.from_tensor_slices((train_images, train_labels)).shuffle(1000).batch(config['batch_size'],drop_remainder=True)
-    acc_avg = tf.metrics.Accuracy()
-    loss_avg = tf.metrics.Mean()
-    for inputs, outputs in train_ds:
-        logits,loss,pred = vt_model(inputs, outputs, True , config['dropout_prob'])
-        loss_avg(loss)
-        acc_avg(pred, outputs)
-    #vt_model.save(path)
-    #l, a = test(test_img, test_lab, path)
-    l, a = 0,1
-    print('Number of Epoch = {} - Average MSE:= {:.10f} - ACC:={:.4f}; TEST Loss:={:.10f} - ACC:={:.4f}'.format(
-        epoch + 1, loss_avg.result(), acc_avg.result(), l, a))
-    test_loss_results.append(l)
-    test_accuracy_results.append(a)
-    train_loss_results.append(loss_avg.result())
-    train_accuracy_results.append(acc_avg.result())
+  train_images = tf.cast(train_images, dtype=tf.float32)
+  train_labels = tf.cast(train_labels, dtype=tf.float32)
+  test_img = tf.cast(test_img, dtype=tf.float32)
+  test_lab = tf.cast(test_lab, dtype=tf.float32)
+  history = vt_model.fit(train_images, train_labels, batch_size=config['batch_size'], shuffle= True, validation_data=(test_img,test_lab), callbacks=[cp_callback], epochs = config['max_epochs'])#, True , config['dropout_prob']) 
+  pred = vt_model.predict(test_img, batch_size=config['batch_size'])
+  #print(vt_model.pred(pred), test_lab)
   time_taken = time.time() - time_start
-  vt_model.save(path)
-
   print('\nTotal time taken (in seconds): {:.2f}'.format(time_taken))
-  return test_loss_results, test_accuracy_results, train_loss_results, train_accuracy_results
 
 def readData():
     train_seqs, train_labels = utils.Lan_features(config['input'])
     train_seqs = utils.padding_feature(train_seqs, config['instruction_number'], config['instruction_length'], '90')
     test_seqs, test_labels = utils.Lan_features(config['valid'])
     test_seqs = utils.padding_feature(test_seqs, config['instruction_number'], config['instruction_length'], '90')
+    print(test_seqs, test_labels )
+    if len(train_seqs) % config['batch_size'] != 0:
+        rand = [random.randint(0,len(train_seqs)-1) for i in range(config['batch_size'] - len(train_seqs) % config['batch_size'])]
+        for r in rand:
+            train_seqs.append(train_seqs[r])
+            train_labels = np.append(train_labels,train_labels[r])
+    if len(test_seqs) % config['batch_size'] != 0:
+        rand = [random.randint(0,len(test_seqs)-1) for i in range(config['batch_size'] - len(test_seqs) % config['batch_size'])]
+        for r in rand:
+            test_seqs.append(test_seqs[r])
+            test_labels = np.append(test_labels,test_labels[r])
     return train_seqs, train_labels, test_seqs, test_labels 
 
 train_seqs, train_labels, test_seqs, test_labels = readData()
 train(train_seqs, train_labels, test_seqs, test_labels, config['save_path'])
+test(test_seqs, test_labels, config['save_path'])
