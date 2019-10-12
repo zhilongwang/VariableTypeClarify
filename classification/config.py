@@ -3,17 +3,16 @@ import os
 config = {}
 
 config['cell_type'] = 'gru'
-config['depth'] = 1
-config['birnn'] = False
+config['birnn'] = True
 config['use_fp16'] = False
-config['use_residual'] = True
 config['batch_size'] = 2
 config['hidden_units'] = 128
 config['optimizer'] = 'adam'
 config['learning_rate'] = 0.003
 config['max_gradient_norm'] = 1.0
-config['max_epochs'] = 30
-config['dropout_prob'] = 0.
+config['max_epochs'] = 5
+config['dropout_prob'] = 0.4
+config['loss_func'] = 1
 config['save_path'] = 'model/test/'
 #TODO
 config['input'] = os.getcwd() + '/data/rawdata.txt'
