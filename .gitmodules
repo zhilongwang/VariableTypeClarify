@@ -4,3 +4,6 @@
 [submodule "binutils-gdb"]
 	path = binutils-gdb
 	url = https://github.com/bminor/binutils-gdb.git
+[submodule "pin"]
+	path = pin
+	url = https://github.com/zhilongwang/pin.git

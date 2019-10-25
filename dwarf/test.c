@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
 char * readstr(char *str){
 	char c;
 	int i=0;
@@ -68,5 +69,8 @@ int main(){
 	char *p=q;
 	*(p+3)=(char)arry[5];
 	*(p+1)=(char)arry[5];
+	char * buff = malloc(10);
+	
+	scanf("%s", buff);
 	return 0;
 }
