@@ -1,0 +1,344 @@
+Processing file: sample_exe64.elf
+  Found a compile unit at offset 0, length 115
+    Top DIE with tag=DW_TAG_compile_unit
+    name=/usr/src/packages/BUILD/glibc-2.11.1/csu/../sysdeps/x86_64/elf/start.S
+    DIE tag=DW_TAG_compile_unit
+DIE DW_TAG_compile_unit, size=108, has_children=False
+    |DW_AT_stmt_list   :  AttributeValue(name='DW_AT_stmt_list', form='DW_FORM_data4', value=0, raw_value=0, offset=12)
+    |DW_AT_low_pc      :  AttributeValue(name='DW_AT_low_pc', form='DW_FORM_addr', value=4195328, raw_value=4195328, offset=16)
+    |DW_AT_high_pc     :  AttributeValue(name='DW_AT_high_pc', form='DW_FORM_addr', value=4195370, raw_value=4195370, offset=24)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_string', value='../sysdeps/x86_64/elf/start.S', raw_value='../sysdeps/x86_64/elf/start.S', offset=32)
+    |DW_AT_comp_dir    :  AttributeValue(name='DW_AT_comp_dir', form='DW_FORM_string', value='/usr/src/packages/BUILD/glibc-2.11.1/csu', raw_value='/usr/src/packages/BUILD/glibc-2.11.1/csu', offset=62)
+    |DW_AT_producer    :  AttributeValue(name='DW_AT_producer', form='DW_FORM_string', value='GNU AS 2.20.0', raw_value='GNU AS 2.20.0', offset=103)
+    |DW_AT_language    :  AttributeValue(name='DW_AT_language', form='DW_FORM_data2', value=32769, raw_value=32769, offset=117)
+
+  Found a compile unit at offset 119, length 135
+    Top DIE with tag=DW_TAG_compile_unit
+    name=/usr/src/packages/BUILD/glibc-2.11.1/csu/init.c
+    DIE tag=DW_TAG_compile_unit
+DIE DW_TAG_compile_unit, size=34, has_children=True
+    |DW_AT_producer    :  AttributeValue(name='DW_AT_producer', form='DW_FORM_strp', value='GNU C 4.3.4 [gcc-4_3-branch revision 152973]', raw_value=126, offset=131)
+    |DW_AT_language    :  AttributeValue(name='DW_AT_language', form='DW_FORM_data1', value=1, raw_value=1, offset=135)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='init.c', raw_value=237, offset=136)
+    |DW_AT_comp_dir    :  AttributeValue(name='DW_AT_comp_dir', form='DW_FORM_strp', value='/usr/src/packages/BUILD/glibc-2.11.1/csu', raw_value=37, offset=140)
+    |DW_AT_low_pc      :  AttributeValue(name='DW_AT_low_pc', form='DW_FORM_addr', value=4195372, raw_value=4195372, offset=144)
+    |DW_AT_high_pc     :  AttributeValue(name='DW_AT_high_pc', form='DW_FORM_addr', value=4195372, raw_value=4195372, offset=152)
+    |DW_AT_stmt_list   :  AttributeValue(name='DW_AT_stmt_list', form='DW_FORM_data4', value=97, raw_value=97, offset=160)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=1, raw_value=1, offset=165)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=8, raw_value=8, offset=166)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='unsigned char', raw_value=103, offset=167)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=2, raw_value=2, offset=172)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=7, raw_value=7, offset=173)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='short unsigned int', raw_value=18, offset=174)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=4, raw_value=4, offset=179)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=7, raw_value=7, offset=180)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='unsigned int', raw_value=5, offset=181)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=8, raw_value=8, offset=186)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=7, raw_value=7, offset=187)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='long unsigned int', raw_value=0, offset=188)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=1, raw_value=1, offset=193)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=6, raw_value=6, offset=194)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='signed char', raw_value=105, offset=195)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=2, raw_value=2, offset=200)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=5, raw_value=5, offset=201)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='short int', raw_value=78, offset=202)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=4, raw_value=4, offset=207)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=5, raw_value=5, offset=208)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_string', value='int', raw_value='int', offset=209)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=8, raw_value=8, offset=214)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=5, raw_value=5, offset=215)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='long int', raw_value=117, offset=216)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=3, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=8, raw_value=8, offset=221)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=7, raw_value=7, offset=222)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=1, raw_value=1, offset=224)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=6, raw_value=6, offset=225)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='char', raw_value=112, offset=226)
+
+      DIE tag=DW_TAG_variable
+DIE DW_TAG_variable, size=22, has_children=False
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='_IO_stdin_used', raw_value=88, offset=231)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=235)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=25, raw_value=25, offset=236)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=133, raw_value=133, offset=237)
+    |DW_AT_external    :  AttributeValue(name='DW_AT_external', form='DW_FORM_flag', value=True, raw_value=1, offset=241)
+    |DW_AT_location    :  AttributeValue(name='DW_AT_location', form='DW_FORM_block1', value=[3, 8, 6, 64, 0, 0, 0, 0, 0], raw_value=[3, 8, 6, 64, 0, 0, 0, 0, 0], offset=242)
+
+      DIE tag=DW_TAG_const_type
+DIE DW_TAG_const_type, size=5, has_children=False
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=87, raw_value=87, offset=253)
+
+  Found a compile unit at offset 258, length 156
+    Top DIE with tag=DW_TAG_compile_unit
+    name=/tmp/ebenders/z.c
+    DIE tag=DW_TAG_compile_unit
+DIE DW_TAG_compile_unit, size=34, has_children=True
+    |DW_AT_producer    :  AttributeValue(name='DW_AT_producer', form='DW_FORM_strp', value='GNU C 4.3.4 [gcc-4_3-branch revision 152973]', raw_value=126, offset=270)
+    |DW_AT_language    :  AttributeValue(name='DW_AT_language', form='DW_FORM_data1', value=1, raw_value=1, offset=274)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_string', value='z.c', raw_value='z.c', offset=275)
+    |DW_AT_comp_dir    :  AttributeValue(name='DW_AT_comp_dir', form='DW_FORM_strp', value='/tmp/ebenders', raw_value=176, offset=279)
+    |DW_AT_low_pc      :  AttributeValue(name='DW_AT_low_pc', form='DW_FORM_addr', value=4195564, raw_value=4195564, offset=283)
+    |DW_AT_high_pc     :  AttributeValue(name='DW_AT_high_pc', form='DW_FORM_addr', value=4195607, raw_value=4195607, offset=291)
+    |DW_AT_stmt_list   :  AttributeValue(name='DW_AT_stmt_list', form='DW_FORM_data4', value=136, raw_value=136, offset=299)
+
+      DIE tag=DW_TAG_subprogram
+DIE DW_TAG_subprogram, size=37, has_children=True
+    |DW_AT_external    :  AttributeValue(name='DW_AT_external', form='DW_FORM_flag', value=True, raw_value=1, offset=304)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='main', raw_value=200, offset=305)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=309)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=2, raw_value=2, offset=310)
+    |DW_AT_prototyped  :  AttributeValue(name='DW_AT_prototyped', form='DW_FORM_flag', value=True, raw_value=1, offset=311)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=111, raw_value=111, offset=312)
+    |DW_AT_low_pc      :  AttributeValue(name='DW_AT_low_pc', form='DW_FORM_addr', value=4195564, raw_value=4195564, offset=316)
+    |DW_AT_high_pc     :  AttributeValue(name='DW_AT_high_pc', form='DW_FORM_addr', value=4195607, raw_value=4195607, offset=324)
+    |DW_AT_frame_base  :  AttributeValue(name='DW_AT_frame_base', form='DW_FORM_data4', value=0, raw_value=0, offset=332)
+    |DW_AT_sibling     :  AttributeValue(name='DW_AT_sibling', form='DW_FORM_ref4', value=111, raw_value=111, offset=336)
+
+        DIE tag=DW_TAG_formal_parameter
+DIE DW_TAG_formal_parameter, size=14, has_children=False
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='argc', raw_value=195, offset=341)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=345)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=2, raw_value=2, offset=346)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=111, raw_value=111, offset=347)
+    |DW_AT_location    :  AttributeValue(name='DW_AT_location', form='DW_FORM_block1', value=[145, 108], raw_value=[145, 108], offset=351)
+
+        DIE tag=DW_TAG_formal_parameter
+DIE DW_TAG_formal_parameter, size=14, has_children=False
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='argv', raw_value=171, offset=355)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=359)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=2, raw_value=2, offset=360)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=118, raw_value=118, offset=361)
+    |DW_AT_location    :  AttributeValue(name='DW_AT_location', form='DW_FORM_block1', value=[145, 96], raw_value=[145, 96], offset=365)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=4, raw_value=4, offset=370)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=5, raw_value=5, offset=371)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_string', value='int', raw_value='int', offset=372)
+
+      DIE tag=DW_TAG_pointer_type
+DIE DW_TAG_pointer_type, size=6, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=8, raw_value=8, offset=377)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=124, raw_value=124, offset=378)
+
+      DIE tag=DW_TAG_pointer_type
+DIE DW_TAG_pointer_type, size=6, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=8, raw_value=8, offset=383)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=130, raw_value=130, offset=384)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=1, raw_value=1, offset=389)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=6, raw_value=6, offset=390)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='char', raw_value=112, offset=391)
+
+      DIE tag=DW_TAG_variable
+DIE DW_TAG_variable, size=22, has_children=False
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='glob', raw_value=190, offset=396)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=400)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=1, raw_value=1, offset=401)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=111, raw_value=111, offset=402)
+    |DW_AT_external    :  AttributeValue(name='DW_AT_external', form='DW_FORM_flag', value=True, raw_value=1, offset=406)
+    |DW_AT_location    :  AttributeValue(name='DW_AT_location', form='DW_FORM_block1', value=[3, 24, 16, 96, 0, 0, 0, 0, 0], raw_value=[3, 24, 16, 96, 0, 0, 0, 0, 0], offset=407)
+
+  Found a compile unit at offset 418, length 300
+    Top DIE with tag=DW_TAG_compile_unit
+    name=/usr/src/packages/BUILD/glibc-2.11.1/csu/elf-init.c
+    DIE tag=DW_TAG_compile_unit
+DIE DW_TAG_compile_unit, size=34, has_children=True
+    |DW_AT_producer    :  AttributeValue(name='DW_AT_producer', form='DW_FORM_strp', value='GNU C 4.3.4 [gcc-4_3-branch revision 152973]', raw_value=126, offset=430)
+    |DW_AT_language    :  AttributeValue(name='DW_AT_language', form='DW_FORM_data1', value=1, raw_value=1, offset=434)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='elf-init.c', raw_value=233, offset=435)
+    |DW_AT_comp_dir    :  AttributeValue(name='DW_AT_comp_dir', form='DW_FORM_strp', value='/usr/src/packages/BUILD/glibc-2.11.1/csu', raw_value=37, offset=439)
+    |DW_AT_low_pc      :  AttributeValue(name='DW_AT_low_pc', form='DW_FORM_addr', value=4195616, raw_value=4195616, offset=443)
+    |DW_AT_high_pc     :  AttributeValue(name='DW_AT_high_pc', form='DW_FORM_addr', value=4195769, raw_value=4195769, offset=451)
+    |DW_AT_stmt_list   :  AttributeValue(name='DW_AT_stmt_list', form='DW_FORM_data4', value=193, raw_value=193, offset=459)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=8, raw_value=8, offset=464)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=5, raw_value=5, offset=465)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='long int', raw_value=117, offset=466)
+
+      DIE tag=DW_TAG_typedef
+DIE DW_TAG_typedef, size=11, has_children=False
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='size_t', raw_value=205, offset=471)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=2, raw_value=2, offset=475)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=214, raw_value=214, offset=476)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=63, raw_value=63, offset=477)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=8, raw_value=8, offset=482)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=7, raw_value=7, offset=483)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='long unsigned int', raw_value=0, offset=484)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=4, raw_value=4, offset=489)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=5, raw_value=5, offset=490)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_string', value='int', raw_value='int', offset=491)
+
+      DIE tag=DW_TAG_subprogram
+DIE DW_TAG_subprogram, size=28, has_children=False
+    |DW_AT_external    :  AttributeValue(name='DW_AT_external', form='DW_FORM_flag', value=True, raw_value=1, offset=496)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='__libc_csu_fini', raw_value=285, offset=497)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=501)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=132, raw_value=132, offset=502)
+    |DW_AT_prototyped  :  AttributeValue(name='DW_AT_prototyped', form='DW_FORM_flag', value=True, raw_value=1, offset=503)
+    |DW_AT_low_pc      :  AttributeValue(name='DW_AT_low_pc', form='DW_FORM_addr', value=4195616, raw_value=4195616, offset=504)
+    |DW_AT_high_pc     :  AttributeValue(name='DW_AT_high_pc', form='DW_FORM_addr', value=4195618, raw_value=4195618, offset=512)
+    |DW_AT_frame_base  :  AttributeValue(name='DW_AT_frame_base', form='DW_FORM_block1', value=[119, 8], raw_value=[119, 8], offset=520)
+
+      DIE tag=DW_TAG_subprogram
+DIE DW_TAG_subprogram, size=33, has_children=True
+    |DW_AT_external    :  AttributeValue(name='DW_AT_external', form='DW_FORM_flag', value=True, raw_value=1, offset=524)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='__libc_csu_init', raw_value=217, offset=525)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=529)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=106, raw_value=106, offset=530)
+    |DW_AT_prototyped  :  AttributeValue(name='DW_AT_prototyped', form='DW_FORM_flag', value=True, raw_value=1, offset=531)
+    |DW_AT_low_pc      :  AttributeValue(name='DW_AT_low_pc', form='DW_FORM_addr', value=4195632, raw_value=4195632, offset=532)
+    |DW_AT_high_pc     :  AttributeValue(name='DW_AT_high_pc', form='DW_FORM_addr', value=4195769, raw_value=4195769, offset=540)
+    |DW_AT_frame_base  :  AttributeValue(name='DW_AT_frame_base', form='DW_FORM_data4', value=76, raw_value=76, offset=548)
+    |DW_AT_sibling     :  AttributeValue(name='DW_AT_sibling', form='DW_FORM_ref4', value=214, raw_value=214, offset=552)
+
+        DIE tag=DW_TAG_formal_parameter
+DIE DW_TAG_formal_parameter, size=15, has_children=False
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='argc', raw_value=195, offset=557)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=561)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=105, raw_value=105, offset=562)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=70, raw_value=70, offset=563)
+    |DW_AT_location    :  AttributeValue(name='DW_AT_location', form='DW_FORM_data4', value=133, raw_value=133, offset=567)
+
+        DIE tag=DW_TAG_formal_parameter
+DIE DW_TAG_formal_parameter, size=15, has_children=False
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='argv', raw_value=171, offset=572)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=576)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=105, raw_value=105, offset=577)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=214, raw_value=214, offset=578)
+    |DW_AT_location    :  AttributeValue(name='DW_AT_location', form='DW_FORM_data4', value=187, raw_value=187, offset=582)
+
+        DIE tag=DW_TAG_formal_parameter
+DIE DW_TAG_formal_parameter, size=15, has_children=False
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='envp', raw_value=212, offset=587)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=591)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=105, raw_value=105, offset=592)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=214, raw_value=214, offset=593)
+    |DW_AT_location    :  AttributeValue(name='DW_AT_location', form='DW_FORM_data4', value=241, raw_value=241, offset=597)
+
+        DIE tag=DW_TAG_variable
+DIE DW_TAG_variable, size=11, has_children=False
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='size', raw_value=263, offset=602)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=606)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=122, raw_value=122, offset=607)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=233, raw_value=233, offset=608)
+
+        DIE tag=DW_TAG_lexical_block
+DIE DW_TAG_lexical_block, size=5, has_children=True
+    |DW_AT_ranges      :  AttributeValue(name='DW_AT_ranges', form='DW_FORM_data4', value=0, raw_value=0, offset=613)
+
+          DIE tag=DW_TAG_variable
+DIE DW_TAG_variable, size=13, has_children=False
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_string', value='i', raw_value='i', offset=618)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=620)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=123, raw_value=123, offset=621)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=52, raw_value=52, offset=622)
+    |DW_AT_location    :  AttributeValue(name='DW_AT_location', form='DW_FORM_data4', value=295, raw_value=295, offset=626)
+
+      DIE tag=DW_TAG_pointer_type
+DIE DW_TAG_pointer_type, size=6, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=8, raw_value=8, offset=633)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=220, raw_value=220, offset=634)
+
+      DIE tag=DW_TAG_pointer_type
+DIE DW_TAG_pointer_type, size=6, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=8, raw_value=8, offset=639)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=226, raw_value=226, offset=640)
+
+      DIE tag=DW_TAG_base_type
+DIE DW_TAG_base_type, size=7, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=1, raw_value=1, offset=645)
+    |DW_AT_encoding    :  AttributeValue(name='DW_AT_encoding', form='DW_FORM_data1', value=6, raw_value=6, offset=646)
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='char', raw_value=112, offset=647)
+
+      DIE tag=DW_TAG_const_type
+DIE DW_TAG_const_type, size=5, has_children=False
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=52, raw_value=52, offset=652)
+
+      DIE tag=DW_TAG_array_type
+DIE DW_TAG_array_type, size=9, has_children=True
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=271, raw_value=271, offset=657)
+    |DW_AT_sibling     :  AttributeValue(name='DW_AT_sibling', form='DW_FORM_ref4', value=249, raw_value=249, offset=661)
+
+        DIE tag=DW_TAG_subrange_type
+DIE DW_TAG_subrange_type, size=1, has_children=False
+
+      DIE tag=DW_TAG_subroutine_type
+DIE DW_TAG_subroutine_type, size=6, has_children=True
+    |DW_AT_prototyped  :  AttributeValue(name='DW_AT_prototyped', form='DW_FORM_flag', value=True, raw_value=1, offset=668)
+    |DW_AT_sibling     :  AttributeValue(name='DW_AT_sibling', form='DW_FORM_ref4', value=271, raw_value=271, offset=669)
+
+        DIE tag=DW_TAG_formal_parameter
+DIE DW_TAG_formal_parameter, size=5, has_children=False
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=70, raw_value=70, offset=674)
+
+        DIE tag=DW_TAG_formal_parameter
+DIE DW_TAG_formal_parameter, size=5, has_children=False
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=214, raw_value=214, offset=679)
+
+        DIE tag=DW_TAG_formal_parameter
+DIE DW_TAG_formal_parameter, size=5, has_children=False
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=214, raw_value=214, offset=684)
+
+      DIE tag=DW_TAG_pointer_type
+DIE DW_TAG_pointer_type, size=6, has_children=False
+    |DW_AT_byte_size   :  AttributeValue(name='DW_AT_byte_size', form='DW_FORM_data1', value=8, raw_value=8, offset=690)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=249, raw_value=249, offset=691)
+
+      DIE tag=DW_TAG_variable
+DIE DW_TAG_variable, size=13, has_children=False
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='__init_array_start', raw_value=244, offset=696)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=700)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=59, raw_value=59, offset=701)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=238, raw_value=238, offset=702)
+    |DW_AT_external    :  AttributeValue(name='DW_AT_external', form='DW_FORM_flag', value=True, raw_value=1, offset=706)
+    |DW_AT_declaration :  AttributeValue(name='DW_AT_declaration', form='DW_FORM_flag', value=True, raw_value=1, offset=707)
+
+      DIE tag=DW_TAG_variable
+DIE DW_TAG_variable, size=13, has_children=False
+    |DW_AT_name        :  AttributeValue(name='DW_AT_name', form='DW_FORM_strp', value='__init_array_end', raw_value=268, offset=709)
+    |DW_AT_decl_file   :  AttributeValue(name='DW_AT_decl_file', form='DW_FORM_data1', value=1, raw_value=1, offset=713)
+    |DW_AT_decl_line   :  AttributeValue(name='DW_AT_decl_line', form='DW_FORM_data1', value=61, raw_value=61, offset=714)
+    |DW_AT_type        :  AttributeValue(name='DW_AT_type', form='DW_FORM_ref4', value=238, raw_value=238, offset=715)
+    |DW_AT_external    :  AttributeValue(name='DW_AT_external', form='DW_FORM_flag', value=True, raw_value=1, offset=719)
+    |DW_AT_declaration :  AttributeValue(name='DW_AT_declaration', form='DW_FORM_flag', value=True, raw_value=1, offset=720)
+
