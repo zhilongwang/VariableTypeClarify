@@ -6,7 +6,7 @@ import pdb
 
 # If pyelftools is not installed, the example can also run from the root or
 # examples/ dir of the source distribution.
-sys.path[0:0] = ['.', '..']
+sys.path[0:0] = ['.', '..', '../pyelftools']
 
 from elftools.common.py3compat import itervalues
 from elftools.elf.elffile import ELFFile
@@ -98,7 +98,7 @@ class ElfDwarf:
                     elif die.tag == 'DW_TAG_variable' and 'DW_AT_external' in die.attributes:
                         self.process_global_var(die)
                 
-            pincmd = ['../../pin/pin', '-t', '../../TaintAnalysisWithPin/obj-ia32/taint.so', '--', elf_file_path]
+            pincmd = ['../pin/pin', '-t', '../TaintAnalysisWithPin/obj-ia32/taint.so', '--', elf_file_path]
             result = elf_file_path+'.out'
             print(result)
             try:
