@@ -1,8 +1,10 @@
 from __future__ import print_function
 import subprocess
 from subprocess import *
+import getopt
 import sys
 import pdb
+import os
 
 # If pyelftools is not installed, the example can also run from the root or
 # examples/ dir of the source distribution.
@@ -26,9 +28,11 @@ class ElfDwarf:
     :addr2type_map: map address to type
     :base_type_map: map id to type 
     """
-    def __init__(self,elf_file_path):
+    def __init__(self, elf_file_path, inputfile, resultdir):
         self.elf_file_path = elf_file_path
         self.result_file_path = self.elf_file_path + ".type"
+        self.inputfile = inputfile
+        self.resultdir = resultdir
         # To save the basic information.
         self.base_type_map = {}
         self.addr2type_map = {}
@@ -50,8 +54,6 @@ class ElfDwarf:
         self.CU = None
         self.dwarfinfo = None
         #
-
-        self.elfFilePath = filename
         print('Processing file:', self.elf_file_path)
         with open(self.elf_file_path, 'rb') as f:
             elffile = ELFFile(f)
@@ -98,14 +100,22 @@ class ElfDwarf:
                     elif die.tag == 'DW_TAG_variable' and 'DW_AT_external' in die.attributes:
                         self.process_global_var(die)
                 
-            pincmd = ['../pin/pin', '-t', '../TaintAnalysisWithPin/obj-ia32/taint.so', '--', elf_file_path]
-            result = elf_file_path+'.out'
+            pincmd = ['../pin/pin', '-t', '../TaintAnalysisWithPin/obj-ia32/taint.so', '--', elf_file_path, "<", self.inputfile]
+            print(pincmd)
+            result = self.resultdir + '/' + elf_file_path+'.out'
             print(result)
             try:
-                trace = subprocess.check_output(pincmd)
+                # trace = subprocess.check_output(pincmd)
+                process = subprocess.Popen(pincmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+                with open(self.inputfile, 'rb') as inputfile:
+                    for line in inputfile.readlines():
+                        print("Give Std Input:%s" % line)
+                        process.stdin.write(line)
+                trace = process.communicate()[0]
+                process.stdin.close()
                 tracelist = loadtrace(trace)
                 extractfromtrace(tracelist, self.global_var, self.functions, result)
-                # print(lines)
+                
             except subprocess.CalledProcessError, e:
                 print("run pin error(%s)")
                 return None
@@ -228,13 +238,62 @@ class ElfDwarf:
         
         if "breg" not in self.functions[-1]["stack_variables"][-1]:
             self.functions[-1]["stack_variables"].pop()
-                        
-                    
-               
+
+def usage():
+    print("usage: %s [options]" % __file__)
+    print("   -p, --program  the program to be run")
+    print("   -i, --input    input of the program")
+    print("   -r, --result   dir to save the result")
+    print("")
+    print("Example: python %s -p ./target_program -i ./inputfile -r resultdir" % __file__)                    
+
+def checkpath(path):
+    if not os.path.exists(path):
+        try:
+           os.makedirs(path)
+        except OSError as exc: # Guard against race condition
+            raise
+
+def getopts():
+    try:
+        usage_opt = [
+                        "program", "inputfile", "result"
+                    ]
+
+        opts, args = getopt.getopt(sys.argv[1:], "p:i:r:", usage_opt)
+    except getopt.GetoptError as err:
+        print(str(err))
+        usage()
+        sys.exit(2)
+    filename = None
+    inputfile = None
+    resultdir = None
+    for opt, arg in opts:
+        if opt in ("-p", "--program"):
+            filename = arg
+            checkpath(filename)
+        elif opt in ("-i", "--input"):
+            inputfile = arg
+            checkpath(inputfile)
+        elif opt in ("-r", "--result"):
+            resultdir = arg
+            checkpath(resultdir)
+        else:
+            assert False, "unhandled option"  
+
+    print(filename)
+    print(inputfile)
+    print(resultdir)
+    elf = ElfDwarf(filename, inputfile, resultdir)            
 
         
 
 if __name__ == '__main__':
-    if sys.argv[1] == '--test':
-        for filename in sys.argv[2:]:
-            elf = ElfDwarf(filename)
+    if len(sys.argv) <= 1:
+        usage()
+    else:
+        getopts()
+
+    # if sys.argv[1] == '--p':
+    #     for filename in sys.argv[2:]:
+    #         elf = ElfDwarf(filename)

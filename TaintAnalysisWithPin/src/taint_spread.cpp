@@ -31,7 +31,7 @@ VOID MemTo1Reg(VOID * ip, string funname, string assemble, const CONTEXT * ctxt,
 	}else{
 		D(cout << hex << "[LOAD]:(<N><"<< (UINT32)addr << ">){" << (unsigned int)(w_reg_1) << "}|" << funname << "|"<< endl;)
 	}
-	D(cout << hex << ip << "\t"<< assemble  << endl;)
+	D(cout << hex << "[DIS]" << assemble  << endl;)
 	return;
 }
 VOID MemTo2Reg(VOID * ip, string funname, string assemble, const CONTEXT * ctxt, VOID * addr, UINT32 size, REG w_reg_1, REG w_reg_2){
@@ -42,7 +42,7 @@ VOID MemTo2Reg(VOID * ip, string funname, string assemble, const CONTEXT * ctxt,
 	}else{
 		D(cout << hex << "[LOAD]:(<N><"<< (UINT32)addr << ">){" << (unsigned int)(w_reg_1) << "}{" << (unsigned int)(w_reg_2) << "}|" << funname << "|" << endl;)
 	}
-	D(cout << hex << ip << "\t"<< assemble  << endl;)
+	D(cout << hex << "[DIS]" << assemble  << endl;)
 	return;
 }
 VOID MemTo3Reg(VOID * ip, string funname, string assemble, const CONTEXT * ctxt, VOID * addr, UINT32 size, REG w_reg_1, REG w_reg_2, REG w_reg_3){
@@ -53,7 +53,7 @@ VOID MemTo3Reg(VOID * ip, string funname, string assemble, const CONTEXT * ctxt,
 	}{
 		D(cout << hex << "[LOAD]:(<N><"<< (UINT32)addr << ">){" << (unsigned int)(w_reg_1) << "}{" << (unsigned int)(w_reg_2) << "}{" << (unsigned int)(w_reg_3) << "}|" << funname << "|" << endl;)
 	}
-	D(cout << hex << ip << "\t"<< assemble  << endl;)
+	D(cout << hex << "[DIS]" << assemble  << endl;)
 	return;
 }
 VOID ZeroReg2Mem(VOID * ip, string funname, string assemble, const CONTEXT * ctxt, VOID * addr, UINT32 size){
@@ -65,7 +65,7 @@ VOID ZeroReg2Mem(VOID * ip, string funname, string assemble, const CONTEXT * ctx
 	}else{ 
 		D(cout << hex << "[STOR]:("<< 0 << "){<N><" << (UINT32)addr << ">}|" << funname << "|" << endl;)
 	}
-	D(cout << hex << ip << "\t"<< assemble  << endl;)
+	D(cout << hex << "[DIS]" << assemble  << endl;)
 	return;
 }
 
@@ -77,7 +77,7 @@ VOID OneReg2Mem(VOID * ip, string funname, string assemble, const CONTEXT * ctxt
 	}else{
 		D(cout << hex << "[STOR]:("<< (unsigned int)(r_reg_1) << "){<N><" << (UINT32)addr << ">}|" << funname << "|" << endl;)
 	}
-	D(cout << hex << ip << "\t"<< assemble  << endl;)
+	D(cout << hex << "[DIS]" << assemble  << endl;)
 	return;
 }
 
@@ -89,7 +89,7 @@ VOID TwoReg2Mem(VOID * ip,string funname,  string assemble, const CONTEXT * ctxt
 	}else{
 		D(cout << hex << "[STOR]:("<< (unsigned int)(r_reg_1) << ")(" << (unsigned int)(r_reg_2) <<"){<N><" << (UINT32)addr << ">}|" << funname << "|" << endl;)
 	}
-	D(cout << hex << ip << "\t"<< assemble  << endl;)
+	D(cout << hex << "[DIS]" << assemble  << endl;)
 	return;
 }
 
@@ -102,13 +102,13 @@ VOID ThreeReg2Mem(VOID * ip, string funname, string assemble, const CONTEXT * ct
 		D(cout << hex << "[STOR]:("<< (unsigned int)(r_reg_1) << ")(" << (unsigned int)(r_reg_2) << ")(" << (unsigned int)(r_reg_3) << "){<N><" << (UINT32)addr << ">}|" << funname << "|" << endl;)
 	}
 	
-	D(cout << hex << ip << "\t"<< assemble  << endl;)
+	D(cout << hex << "[DIS]" << assemble  << endl;)
 	return;
 }
 
 VOID OneRegs(VOID * ip,  string funname, string assemble, UINT32 read_reg_num, REG reg_1){
 	D(cout << hex<< "[IMMI]:{"<< (unsigned int)(reg_1) <<"}|"<< funname <<"|" << endl;)
-	D(cout << hex << ip << "\t"<< assemble  << endl;)
+	D(cout << hex << "[DIS]" << assemble  << endl;)
 	return;
 }
 
@@ -127,7 +127,7 @@ VOID TwoRegs(VOID * ip,  string funname, string assemble, UINT32 read_reg_num, R
 		default:
 			cout << "error" << endl;
 	}
-	D(cout << hex << ip << "\t"<< assemble  << endl;)
+	D(cout << hex << "[DIS]" << assemble  << endl;)
 	return;
 }
 
@@ -149,7 +149,7 @@ VOID ThreeRegs(VOID * ip,  string funname, string assemble, UINT32 read_reg_num,
 		default:
 			cout << "error" << endl;
 	}
-	D(cout << hex << ip << "\t"<< assemble  << endl;)
+	D(cout << hex << "[DIS]" << assemble  << endl;)
 	return;
 }
 
@@ -174,7 +174,7 @@ VOID FourRegs(VOID * ip,  string funname, string assemble, UINT32 read_reg_num, 
 		default:
 			cout << "error" << endl;
 	}
-	D(cout << hex << ip << "\t"<< assemble  << endl;)
+	D(cout << hex << "[DIS]" << assemble  << endl;)
 	return;
 }
 VOID Mem2Mem(VOID * ip, string funname, string assemble, const CONTEXT * ctxt, VOID * read_addr, UINT32 read_size, VOID * write_addr, UINT32 write_size){
@@ -193,7 +193,7 @@ VOID Mem2Mem(VOID * ip, string funname, string assemble, const CONTEXT * ctxt, V
 		D(cout << hex << "{<N><"<< write_addr << ">}|" << funname << "|" << endl;)
 		print_context(ctxt, write_addr);
 	}
-	D(cout << hex << ip << "\t"<< assemble  << endl;)
+	D(cout << hex << "[DIS]" << assemble  << endl;)
 	return;
 }
 

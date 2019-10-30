@@ -13,11 +13,13 @@ extern "C" {
 #include "rt_check.h"
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 #include <list>
 using std::cout;
 using std::hex;
 using std::cerr;
 using std::endl;
+using std::stringstream;
 #ifdef __DEBUG_ANALYIZE
 #define D(x) x
 #else 
@@ -90,8 +92,10 @@ VOID Instruction(INS ins, string funname)
         sprintf(tmp, "%02x ", (bytes[u]));
 		strcat(machcode, tmp);
 	}
-	
-    // printf("%s\n", machcode);
+	stringstream disas;
+	disas.flags(stringstream::left); //左对齐
+	disas << std::setw(30) << string(machcode) << INS_Disassemble(ins);
+	// printf("%s\n", machcode);
 	if(INS_IsMemoryRead(ins) && INS_IsMemoryWrite(ins)){ //memory to memory 
 		//cout << hex << INS_Address(ins) << ":\t"<<INS_Disassemble(ins) << endl;
 		D(cout << "MemoryRead && Memory Write" << endl;)
@@ -100,7 +104,7 @@ VOID Instruction(INS ins, string funname)
 			ins, IPOINT_BEFORE, (AFUNPTR)Mem2Mem,
 			IARG_INST_PTR, 
 			IARG_PTR, new string(funname),
-			IARG_PTR, new string(string(machcode) + "\t\t\t\t" + INS_Disassemble(ins)),
+			IARG_PTR, new string(disas.str()),
 			IARG_CONST_CONTEXT,
 			IARG_MEMORYREAD_EA,
 			IARG_MEMORYREAD_SIZE,
@@ -122,7 +126,7 @@ VOID Instruction(INS ins, string funname)
 				ins, IPOINT_BEFORE, Mem2Reg[write_reg_count],
 				IARG_INST_PTR, 
 				IARG_PTR, new string(funname),
-				IARG_PTR, new string(string(machcode) + "\t\t\t\t" + INS_Disassemble(ins)),
+				IARG_PTR, new string(disas.str()),
 				IARG_CONST_CONTEXT,
 				IARG_MEMORYREAD_EA,
 				IARG_MEMORYREAD_SIZE,
@@ -161,7 +165,7 @@ VOID Instruction(INS ins, string funname)
 				ins, IPOINT_BEFORE, Reg2Mem[addressing_reg_exclusive_count],
 				IARG_INST_PTR, 
 				IARG_PTR, new string(funname),
-				IARG_PTR, new string(string(machcode) + "\t\t\t\t" +INS_Disassemble(ins)),
+				IARG_PTR, new string(disas.str()),
 				IARG_CONST_CONTEXT,
 				IARG_MEMORYWRITE_EA,
 				IARG_MEMORYWRITE_SIZE,
@@ -213,7 +217,7 @@ VOID Instruction(INS ins, string funname)
 				ins, IPOINT_BEFORE, Reg2Reg[addressing_reg_exclusive_count + write_reg_count],
 				IARG_INST_PTR, 
 				IARG_PTR, new string(funname),
-				IARG_PTR, new string(string(machcode) + "\t\t\t\t" +INS_Disassemble(ins)),
+				IARG_PTR, new string(disas.str()),
 				IARG_UINT32, addressing_reg_exclusive_count,
 				IARG_IARGLIST, args,
 				IARG_END);
