@@ -1,14 +1,15 @@
 from __future__ import print_function
 import subprocess
 from subprocess import *
+import logging
 import getopt
 import sys
 import pdb
 import os
-
+l = logging.getLogger("dwarf_variable_location")
 # If pyelftools is not installed, the example can also run from the root or
 # examples/ dir of the source distribution.
-sys.path[0:0] = ['.', '..', '../pyelftools']
+sys.path[0:0] = ['.', '..', '../pyelftools', '/home/zzw169/Desktop/VariableTypeClarify/pyelftools']
 
 from elftools.common.py3compat import itervalues
 from elftools.elf.elffile import ELFFile
@@ -96,29 +97,35 @@ class ElfDwarf:
                     # AttributeValue object (from elftools.dwarf.die), which we
                     # can examine.
                     if die.tag == 'DW_TAG_subprogram':
+                        print("")
                         self.process_subprogram(die)
                     elif die.tag == 'DW_TAG_variable' and 'DW_AT_external' in die.attributes:
+                        print("")
                         self.process_global_var(die)
                 
-            pincmd = ['../pin/pin', '-t', '../TaintAnalysisWithPin/obj-ia32/taint.so', '--', elf_file_path, "<", self.inputfile]
+            pincmd = ['../pin/pin', '-t', '../TaintAnalysisWithPin/obj-ia32/taint.so', '--', elf_file_path]
             print(pincmd)
-            result = self.resultdir + '/' + elf_file_path+'.out'
+            result = self.resultdir + '/' + elf_file_path.split(b'/')[-1] + ".out" 
             print(result)
             try:
                 # trace = subprocess.check_output(pincmd)
-                process = subprocess.Popen(pincmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-                with open(self.inputfile, 'rb') as inputfile:
-                    for line in inputfile.readlines():
-                        print("Give Std Input:%s" % line)
-                        process.stdin.write(line)
-                trace = process.communicate()[0]
-                process.stdin.close()
+                trace = ""
+                if inputfile != None:
+                    process = subprocess.Popen(pincmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+                    with open(self.inputfile, 'rb') as inputfile:
+                        for line in inputfile.readlines():
+                            print("Give Std Input:%s" % line)
+                            process.stdin.write(line)
+                    trace = process.communicate()[0]
+                    process.stdin.close()
+                else:
+                    trace = subprocess.check_output(pincmd)
                 tracelist = loadtrace(trace)
                 extractfromtrace(tracelist, self.global_var, self.functions, result)
                 
-            except subprocess.CalledProcessError, e:
+            except subprocess.CalledProcessError as e:
                 print("run pin error(%s)")
-                return None
+                # return None
 
     def show_loclist(self, loclist, dwarfinfo, indent):
         """ Display a location list nicely, decoding the DWARF expressions
@@ -138,15 +145,20 @@ class ElfDwarf:
     def process_global_var(self, DIE):
         self.global_var.append({})
         try:
+            print(DIE.attributes['DW_AT_name'].value)
             self.global_var[-1]["name"] = DIE.attributes['DW_AT_name'].value
         except KeyError:
             #print "DIE has no attribute 'DW_AT_name'"
-            self.global_var["name"] = None
+            self.global_var[-1]["name"] = None
 
         variable_size, variable_type_name = get_variable_size_and_name(DIE, self.CU, self.CU_TYPE)
-        print(" name:%s, size:%d, type_name:%s" % (self.global_var[-1]["name"],variable_size, variable_type_name))
-        self.global_var[-1]["size"] = variable_size
-        self.global_var[-1]["type_name"] = variable_type_name
+        # print(" name:%s, size:%d, type_name:%s" % (self.global_var[-1]["name"],variable_size, variable_type_name))
+        if variable_size!= None and variable_type_name!= None:
+            self.global_var[-1]["size"] = variable_size
+            self.global_var[-1]["type_name"] = variable_type_name
+        else:
+            self.global_var.pop()
+            return
 
         for attr in itervalues(DIE.attributes):
             # Check if this attribute contains location information
@@ -168,6 +180,9 @@ class ElfDwarf:
                         print("%s:%s:%d:%s" % (self.global_var[-1]["name"], baseregister, offset,self.global_var[-1]["type_name"]))
                         self.global_var[-1]["offset"] = offset
                         self.global_var[-1]["breg"] = baseregister 
+                        return
+        self.global_var.pop()
+        return 
 
 
     
@@ -176,23 +191,25 @@ class ElfDwarf:
         # Print name, start_address and DW_AT_frame_base of the current function
         # print(subprogram_die)
         self.functions.append({})
+        print(subprogram_die)
         if 'DW_AT_name' in subprogram_die.attributes:
             self.functions[-1]["name"] = subprogram_die.attributes['DW_AT_name'].value
-            print(self.functions[-1]["name"] )
         else:
+            print("Does not find function name")
             self.functions[-1]["name"] = None
-            
-        try:
-            dw_at_frame_base = subprogram_die.attributes['DW_AT_frame_base']
-        except:
-            # I am not sure if every subprogram has a DW_AT_frame_base
-            print("subprogram [%s]  has no a DW_AT_frame_base (and thus no stack variables (?)). Skipping." % self.functions[-1]['name'])
-            self.functions.pop()
-            return
+        # print("function name")
+        # print(self.functions[-1]["name"] ) 
+        # try:
+        #     dw_at_frame_base = subprogram_die.attributes['DW_AT_frame_base']
+        # except:
+        #     # I am not sure if every subprogram has a DW_AT_frame_base
+        #     print(subprogram_die)
+        #     print("subprogram [%s]  has no a DW_AT_frame_base (and thus no stack variables (?)). Skipping." % self.functions[-1]['name'])
+        #     self.functions.pop()
+        #     return
 
         if subprogram_die.has_children:    
             #print "subprogram [%s] has children!" % self.functions[-1]['name']
-            
             self.functions[-1]["stack_variables"] = []
             
             # Print names of all variables that are children of the current DIE (the current function)
@@ -212,9 +229,12 @@ class ElfDwarf:
             self.functions[-1]["stack_variables"][-1]["name"] = None
 
         variable_size, variable_type_name = get_variable_size_and_name(DIE, self.CU, self.CU_TYPE)
-        self.functions[-1]["stack_variables"][-1]["size"] = variable_size
-        self.functions[-1]["stack_variables"][-1]["type_name"] = variable_type_name
-            
+        if variable_size!= None and variable_type_name!= None:
+            self.functions[-1]["stack_variables"][-1]["size"] = variable_size
+            self.functions[-1]["stack_variables"][-1]["type_name"] = variable_type_name
+        else:
+            self.functions[-1]["stack_variables"].pop()
+            return  
         for attr in itervalues(DIE.attributes):
             # Check if this attribute contains location information
             # pdb.set_trace()
@@ -230,70 +250,25 @@ class ElfDwarf:
                     dwarf_expr_dumper = extract_DWARF_expr(loc.loc_expr, self.dwarfinfo.structs)
                     exp_info = dwarf_expr_dumper._str_parts
                     for item in exp_info:
+                        index = item.find(':')
+                        if index == -1:
+                            continue
                         baseregister = item[0:item.find(':')]
                         offset = int(item[item.find(':')+1:])
-                        print("%s:%s:%s:%d:%s" % (self.functions[-1]["name"], self.functions[-1]["stack_variables"][-1]["name"],baseregister, offset,self.functions[-1]["stack_variables"][-1]["type_name"]))
+                        print("%s:%s:%s:%d:%s" % (self.functions[-1]["name"], self.functions[-1]["stack_variables"][-1]["name"], baseregister, offset,self.functions[-1]["stack_variables"][-1]["type_name"]))
                         self.functions[-1]["stack_variables"][-1]["offset"] = offset
                         self.functions[-1]["stack_variables"][-1]["breg"] = baseregister 
         
         if "breg" not in self.functions[-1]["stack_variables"][-1]:
             self.functions[-1]["stack_variables"].pop()
 
-def usage():
-    print("usage: %s [options]" % __file__)
-    print("   -p, --program  the program to be run")
-    print("   -i, --input    input of the program")
-    print("   -r, --result   dir to save the result")
-    print("")
-    print("Example: python %s -p ./target_program -i ./inputfile -r resultdir" % __file__)                    
-
-def checkpath(path):
-    if not os.path.exists(path):
-        try:
-           os.makedirs(path)
-        except OSError as exc: # Guard against race condition
-            raise
-
-def getopts():
-    try:
-        usage_opt = [
-                        "program", "inputfile", "result"
-                    ]
-
-        opts, args = getopt.getopt(sys.argv[1:], "p:i:r:", usage_opt)
-    except getopt.GetoptError as err:
-        print(str(err))
-        usage()
-        sys.exit(2)
-    filename = None
-    inputfile = None
-    resultdir = None
-    for opt, arg in opts:
-        if opt in ("-p", "--program"):
-            filename = arg
-            checkpath(filename)
-        elif opt in ("-i", "--input"):
-            inputfile = arg
-            checkpath(inputfile)
-        elif opt in ("-r", "--result"):
-            resultdir = arg
-            checkpath(resultdir)
-        else:
-            assert False, "unhandled option"  
-
-    print(filename)
-    print(inputfile)
-    print(resultdir)
-    elf = ElfDwarf(filename, inputfile, resultdir)            
-
-        
 
 if __name__ == '__main__':
-    if len(sys.argv) <= 1:
-        usage()
-    else:
-        getopts()
+    # if len(sys.argv) <= 1:
+    #     usage()
+    # else:
+    #     getopts()
 
-    # if sys.argv[1] == '--p':
-    #     for filename in sys.argv[2:]:
-    #         elf = ElfDwarf(filename)
+    if sys.argv[1] == '--p':
+        for filename in sys.argv[2:]:
+            elf = ElfDwarf(filename, None,"./result/test.out") #elf_file_path, inputfile, resultdir

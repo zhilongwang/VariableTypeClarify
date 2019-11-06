@@ -1,3 +1,6 @@
+import logging
+l = logging.getLogger("CU_process")
+
 def get_compile_unit_types(compile_unit):
     # I need to reset them to {} (again) because this function is called for every compile_unit
     CU_TYPE = {}
@@ -37,7 +40,10 @@ def get_compile_unit_types(compile_unit):
             try:    
                 compile_unit_pointer_types[type_die.offset]['name'] = type_die.attributes['DW_AT_name'].value 
             except KeyError:
+                # FIXME in future.
+                compile_unit_pointer_types[type_die.offset]['name'] = 'upointer'
                 print("KeyError: DW_TAG_pointer_type")
+
         elif DIE.tag == 'DW_TAG_enumeration_type':
             compile_unit_enumeration_types[type_die.offset] = {}
             compile_unit_enumeration_types[type_die.offset]['size'] = type_die.attributes['DW_AT_byte_size'].value  
@@ -65,8 +71,8 @@ def get_compile_unit_types(compile_unit):
             compile_unit_structure_types[type_die.offset] = {}
             if 'DW_AT_declaration' in type_die.attributes:
                 # print(type_die.attributes['DW_AT_declaration'])
-                print("Spec says this means: 'Incomplete, non-defining, or separate entity declaration'")
-                print("Setting size to 0.")
+                l.debug("Spec says this means: 'Incomplete, non-defining, or separate entity declaration'")
+                l.debug("Setting size to 0.")
                 compile_unit_structure_types[type_die.offset]['size'] = 0
                 # TODO: check if one can derive from the value if it is a separate decl. and implement sep. decl.
             else:

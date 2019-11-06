@@ -14,7 +14,9 @@ def get_stack_type(functions, instruction):
     for fun in functions:
         if instruction["fun_name"] ==  fun["name"]:
             # print("%s :match: %s" % (instruction["fun_name"], fun["name"]))
-            variables = fun["stack_variables"]
+            variables = fun.get("stack_variables")
+            if variables == None:
+                continue
             for var in variables:
                 try:
                     if var["breg"] == "DW_OP_fbreg" :
