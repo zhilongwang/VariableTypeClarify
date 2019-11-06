@@ -7,6 +7,6 @@
 [submodule "pin"]
 	path = pin
 	url = https://github.com/zhilongwang/pin.git
-[submodule "leetcode"]
-	path = leetcode
+[submodule "testcases/leetcode"]
+	path = testcases/leetcode
 	url = https://github.com/haoel/leetcode.git
