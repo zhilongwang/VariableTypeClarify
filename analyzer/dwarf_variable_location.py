@@ -111,6 +111,7 @@ class ElfDwarf:
                 # trace = subprocess.check_output(pincmd)
                 trace = ""
                 if inputfile != None:
+                    print("fead input")
                     process = subprocess.Popen(pincmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
                     with open(self.inputfile, 'rb') as inputfile:
                         for line in inputfile.readlines():
@@ -119,6 +120,7 @@ class ElfDwarf:
                     trace = process.communicate()[0]
                     process.stdin.close()
                 else:
+                    print("running without input")
                     trace = subprocess.check_output(pincmd)
                 tracelist = loadtrace(trace)
                 extractfromtrace(tracelist, self.global_var, self.functions, result)
@@ -145,7 +147,7 @@ class ElfDwarf:
     def process_global_var(self, DIE):
         self.global_var.append({})
         try:
-            print(DIE.attributes['DW_AT_name'].value)
+            
             self.global_var[-1]["name"] = DIE.attributes['DW_AT_name'].value
         except KeyError:
             #print "DIE has no attribute 'DW_AT_name'"
@@ -191,14 +193,13 @@ class ElfDwarf:
         # Print name, start_address and DW_AT_frame_base of the current function
         # print(subprogram_die)
         self.functions.append({})
-        print(subprogram_die)
         if 'DW_AT_name' in subprogram_die.attributes:
             self.functions[-1]["name"] = subprogram_die.attributes['DW_AT_name'].value
         else:
             print("Does not find function name")
             self.functions[-1]["name"] = None
-        # print("function name")
-        # print(self.functions[-1]["name"] ) 
+        print("function name")
+        print(self.functions[-1]["name"] ) 
         # try:
         #     dw_at_frame_base = subprogram_die.attributes['DW_AT_frame_base']
         # except:
@@ -250,15 +251,22 @@ class ElfDwarf:
                     dwarf_expr_dumper = extract_DWARF_expr(loc.loc_expr, self.dwarfinfo.structs)
                     exp_info = dwarf_expr_dumper._str_parts
                     for item in exp_info:
+                        print(item)
                         index = item.find(':')
                         if index == -1:
                             continue
                         baseregister = item[0:item.find(':')]
-                        offset = int(item[item.find(':')+1:])
-                        print("%s:%s:%s:%d:%s" % (self.functions[-1]["name"], self.functions[-1]["stack_variables"][-1]["name"], baseregister, offset,self.functions[-1]["stack_variables"][-1]["type_name"]))
-                        self.functions[-1]["stack_variables"][-1]["offset"] = offset
-                        self.functions[-1]["stack_variables"][-1]["breg"] = baseregister 
-        
+                        if baseregister == "DW_OP_addr":
+                            offset = int(item[item.find(':')+1:], 16)
+                            print("%s:%s:%s:%d:%s" % (self.functions[-1]["name"], self.functions[-1]["stack_variables"][-1]["name"], baseregister, offset,self.functions[-1]["stack_variables"][-1]["type_name"]))
+                            self.functions[-1]["stack_variables"][-1]["offset"] = offset
+                            self.functions[-1]["stack_variables"][-1]["breg"] = baseregister 
+                        else:
+                            offset = int(item[item.find(':')+1:])
+                            print("%s:%s:%s:%d:%s" % (self.functions[-1]["name"], self.functions[-1]["stack_variables"][-1]["name"], baseregister, offset,self.functions[-1]["stack_variables"][-1]["type_name"]))
+                            self.functions[-1]["stack_variables"][-1]["offset"] = offset
+                            self.functions[-1]["stack_variables"][-1]["breg"] = baseregister 
+            
         if "breg" not in self.functions[-1]["stack_variables"][-1]:
             self.functions[-1]["stack_variables"].pop()
 
@@ -271,4 +279,4 @@ if __name__ == '__main__':
 
     if sys.argv[1] == '--p':
         for filename in sys.argv[2:]:
-            elf = ElfDwarf(filename, None,"./result/test.out") #elf_file_path, inputfile, resultdir
+            elf = ElfDwarf(filename, None,"./results") #elf_file_path, inputfile, resultdir

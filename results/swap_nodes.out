@@ -1,0 +1,40 @@
+upointer
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+89 44 24 28                   movl  %eax, 0x28(%esp)
+83 7c 24 28 00                cmpl  $0x0, 0x28(%esp)
+75 d8                         jnz 0x80489b2
+e8 fa 7d 00 00                calll  0x80507e0
+e8 b9 c6 ff ff                calll  0x804cea3
+8b 3c 24                      movl  (%esp), %edi
+c3                            retl  
+81 c7 16 88 08 00             add $0x88816, %edi
+83 ec 1c                      sub $0x1c, %esp
+75 3d                         jnz 0x8050848
+74 28                         jz 0x8050844
+74 01                         jz 0x805082c
+74 07                         jz 0x8050838
+73 4c                         jnb 0x80508a0
+75 27                         jnz 0x805088f
+75 1e                         jnz 0x805088f
+74 01                         jz 0x8050883
+74 07                         jz 0x805088f
+c3                            retl  
+upointer
+83 7c 24 28 00                cmpl  $0x0, 0x28(%esp)
+75 d8                         jnz 0x80489b2
+e8 fa 7d 00 00                calll  0x80507e0
+e8 b9 c6 ff ff                calll  0x804cea3
+8b 3c 24                      movl  (%esp), %edi
+c3                            retl  
+81 c7 16 88 08 00             add $0x88816, %edi
+83 ec 1c                      sub $0x1c, %esp
+75 3d                         jnz 0x8050848
+74 28                         jz 0x8050844
+74 01                         jz 0x805082c
+74 07                         jz 0x8050838
+73 4c                         jnb 0x80508a0
+75 27                         jnz 0x805088f
+75 1e                         jnz 0x805088f
+74 01                         jz 0x8050883
+74 07                         jz 0x805088f
+c3                            retl  

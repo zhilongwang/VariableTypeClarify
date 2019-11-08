@@ -1,0 +1,71 @@
+int
+3b 45 f4                      cmpl  -0xc(%ebp), %eax
+75 0a                         jnz 0x8048a7c
+eb 6b                         jmp 0x8048af0
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+e9 59 ff ff ff                jmp 0x8048a5a
+75 0a                         jnz 0x8048a6a
+75 0a                         jnz 0x8048a7c
+eb 6b                         jmp 0x8048af0
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+e9 59 ff ff ff                jmp 0x8048a5a
+75 0a                         jnz 0x8048a6a
+75 0a                         jnz 0x8048a7c
+eb 6b                         jmp 0x8048af0
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+int
+3b 45 f4                      cmpl  -0xc(%ebp), %eax
+75 0a                         jnz 0x8048a7c
+eb 6b                         jmp 0x8048af0
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+e9 59 ff ff ff                jmp 0x8048a5a
+75 0a                         jnz 0x8048a6a
+75 0a                         jnz 0x8048a7c
+eb 6b                         jmp 0x8048af0
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+e9 59 ff ff ff                jmp 0x8048a5a
+75 0a                         jnz 0x8048a6a
+75 0a                         jnz 0x8048a7c
+eb 6b                         jmp 0x8048af0
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+int
+3b 45 f4                      cmpl  -0xc(%ebp), %eax
+75 0a                         jnz 0x8048a7c
+eb 6b                         jmp 0x8048af0
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+e9 59 ff ff ff                jmp 0x8048a5a
+75 0a                         jnz 0x8048a6a
+75 0a                         jnz 0x8048a7c
+eb 6b                         jmp 0x8048af0
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+e9 59 ff ff ff                jmp 0x8048a5a
+75 0a                         jnz 0x8048a6a
+e9 97 00 00 00                jmp 0x8048b01
+int
+3b 45 f4                      cmpl  -0xc(%ebp), %eax
+75 0a                         jnz 0x8048a7c
+eb 6b                         jmp 0x8048af0
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+75 8f                         jnz 0x8048a85
+e9 59 ff ff ff                jmp 0x8048a5a
+75 0a                         jnz 0x8048a6a
+e9 97 00 00 00                jmp 0x8048b01

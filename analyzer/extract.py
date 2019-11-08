@@ -9,6 +9,7 @@ p3 = re.compile(r'[<](.*?)[>]', re.S)
 p4 = re.compile(r'[|](.*?)[|]', re.S)
 
 trace_max_length = 20
+trace_min_length = 4
                 
 def extractfromtrace(tracelist, global_var, functions, result):
     with open(result, 'w') as output:
@@ -18,51 +19,57 @@ def extractfromtrace(tracelist, global_var, functions, result):
                 trace_length = 1
                 for addrinfo in read_addrs:
                     type_name = None
+                    # print(tracelist[i]["disas"])
                     if addrinfo["type"] == AddrType.STK:
-                        type_name =  get_stack_type(functions, tracelist[i])
+                        type_name =  get_stack_type(functions, tracelist[i], addrinfo)
                     elif addrinfo["type"] == AddrType.GBL:
                         type_name =  get_global_type(global_var, addrinfo)
                     if type_name != None:
-                        # print(tracelist[i]["disas"]) 
-                        # print(addrinfo["addr"])
-                        ins_trace = ""
-                        print(type_name)
-                        ins_trace = ins_trace + type_name + "\n"
-                        # print(tracelist[i]["disas"])
-                        ins_trace = ins_trace + tracelist[i]["disas"][5:] + "\n"
-                        taint_dic = set()
-                
-                        # dict.has_key('Age')
-                        write_addrs = tracelist[i]["write"]
-                        for writeinfo in write_addrs:
-                            taint_dic.add(writeinfo["addr"])
-                        for j in range(i+1, len(tracelist)):
-                            # taint_dic.discard(11)
-                            # taint_dic.discard(12)
-                            # taint_dic.discard(18)
-                            read_addrs = tracelist[j]["read"]
-                            ins_tainted = False
-                            for readinfo in read_addrs:
-                                if readinfo["addr"] in taint_dic:
-                                    ins_tainted = True
-                            if ins_tainted == True:
-                                trace_length = trace_length + 1
-                                # print(tracelist[j]["disas"])
-                                ins_trace = ins_trace + tracelist[j]["disas"][5:] + "\n"
-                                write_addrs = tracelist[j]["write"]
-                                for writeinfo in write_addrs:
-                                    taint_dic.add(writeinfo["addr"])
-                                    # ins_trace = ins_trace + tracelist[j]["disas"] + "\n"
-                                    # print(taint_dic)
-                            else:
-                                write_addrs = tracelist[j]["write"]
-                                for writeinfo in write_addrs:
-                                    taint_dic.discard(writeinfo["addr"])
-                            if trace_length >= trace_max_length :
-                                break
-                        if trace_length >= trace_max_length:
-                            output.write(ins_trace)  
-        
+                        try:
+                            # print(tracelist[i]["disas"]) 
+                            # print(addrinfo["addr"])
+                            ins_trace = ""
+                            # print("type_name:%s" % type_name)
+                            ins_trace = ins_trace + type_name + "\n"
+                            # print(tracelist[i]["disas"])
+                        
+                            ins_trace = ins_trace + tracelist[i]["disas"][5:] + "\n"
+                            taint_dic = set()
+                    
+                            # dict.has_key('Age')
+                            write_addrs = tracelist[i]["write"]
+                            for writeinfo in write_addrs:
+                                taint_dic.add(writeinfo["addr"])
+                            # print(taint_dic)
+                            for j in range(i+1, len(tracelist)):
+                                # taint_dic.discard(11)
+                                # taint_dic.discard(12)
+                                # taint_dic.discard(18)
+                                read_addrs = tracelist[j]["read"]
+                                ins_tainted = False
+                                for readinfo in read_addrs:
+                                    if readinfo["addr"] in taint_dic:
+                                        ins_tainted = True
+                                if ins_tainted == True:
+                                    trace_length = trace_length + 1
+                                    # print(tracelist[j]["disas"])
+                                    ins_trace = ins_trace + tracelist[j]["disas"][5:] + "\n"
+                                    write_addrs = tracelist[j]["write"]
+                                    for writeinfo in write_addrs:
+                                        taint_dic.add(writeinfo["addr"])
+                                        # ins_trace = ins_trace + tracelist[j]["disas"] + "\n"
+                                        # print(taint_dic)
+                                else:
+                                    write_addrs = tracelist[j]["write"]
+                                    for writeinfo in write_addrs:
+                                        taint_dic.discard(writeinfo["addr"])
+                                if trace_length >= trace_max_length :
+                                    break
+                            if trace_length >= trace_min_length:
+                                output.write(ins_trace) 
+                        except KeyError:
+                            print("KeyError in line 68 of extract")
+            
 
 
 
@@ -102,7 +109,6 @@ def extract_op(line, tracelist):
             elif addrinfo[0] == 'N' :
                 tracelist[-1]["write"][-1]["addr"] = int(addrinfo[1],16)
                 tracelist[-1]["write"][-1]["type"] = AddrType.GBL
-
         else:
             tracelist[-1]["write"][-1]["addr"] = int(addr,16)
             tracelist[-1]["write"][-1]["type"] = AddrType.REG

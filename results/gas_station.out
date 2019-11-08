@@ -1,0 +1,48 @@
+int
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+89 44 24 04                   movl  %eax, 0x4(%esp)
+3b 45 0c                      cmpl  0xc(%ebp), %eax
+7c ab                         jl 0x8048891
+79 06                         jns 0x804889d
+79 0e                         jns 0x80488da
+3b 45 0c                      cmpl  0xc(%ebp), %eax
+7c ab                         jl 0x8048891
+7e 4b                         jle 0x8048937
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+79 06                         jns 0x804889d
+79 0e                         jns 0x80488da
+7c ab                         jl 0x8048891
+7e 4b                         jle 0x8048937
+int
+01 45 f8                      addl  %eax, -0x8(%ebp)
+83 7d f8 00                   cmpl  $0x0, -0x8(%ebp)
+79 0e                         jns 0x80488da
+7c ab                         jl 0x8048891
+7e 4b                         jle 0x8048937
+int
+83 7d f8 00                   cmpl  $0x0, -0x8(%ebp)
+79 0e                         jns 0x80488da
+7c ab                         jl 0x8048891
+7e 4b                         jle 0x8048937
+int
+8b 45 f4                      movl  -0xc(%ebp), %eax
+89 44 24 04                   movl  %eax, 0x4(%esp)
+8b 00                         movl  (%eax), %eax
+99                            cdq 
+89 c6                         mov %eax, %esi
+31 d0                         xor %edx, %eax
+c1 ee 1f                      shr $0x1f, %esi
+29 d0                         sub %edx, %eax
+89 b5 5c fb ff ff             movl  %esi, -0x4a4(%ebp)
+89 85 20 fb ff ff             movl  %eax, -0x4e0(%ebp)
+50                            pushl  %eax
+8b 4c 24 10                   movl  0x10(%esp), %ecx
+89 c8                         mov %ecx, %eax
+01 c0                         add %eax, %eax
+29 c1                         sub %eax, %ecx
+8b b5 20 fb ff ff             movl  -0x4e0(%ebp), %esi
+85 f6                         test %esi, %esi
+0f 84 42 0d 00 00             jz 0x80814c8
+75 1f                         jnz 0x80807b8
+0f 85 0c 0d 00 00             jnz 0x80814ea

@@ -12,6 +12,7 @@ from dwarf_variable_location import *
 logging.getLogger('CU_process').setLevel(logging.ERROR)
 logging.getLogger('dwarf_expr').setLevel(logging.ERROR)
 logging.getLogger('dwarf_variable_location').setLevel(logging.DEBUG)
+logging.getLogger('typesupport').setLevel(logging.WARNING)
 
 def parse(cpppath, update, resultdir):
     compiler = None

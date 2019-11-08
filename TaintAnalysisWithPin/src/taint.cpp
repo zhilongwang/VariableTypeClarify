@@ -72,9 +72,9 @@ VOID Instruction(INS ins, string funname)
 	// 	return ;
 	// }
 	
-	if(INS_OperandCount(ins) <= 1){ //One Operand does not incurs data spread.
-		return ;
-	}
+	// if(INS_OperandCount(ins) <= 1){ //One Operand does not incurs data spread.
+	// 	return ;
+	// }
 	// INS_Size(INS ins)	
 	// INS_Address(ins)
 	UINT8 bytes[16];
@@ -173,7 +173,7 @@ VOID Instruction(INS ins, string funname)
 				IARG_END);
 			IARGLIST_Free(args);
 		}
-	}else {       //register only
+	}else{       //register only
 		D(cout << "[RegisterOnly]:" << endl;)
 		REG pin_base_reg = INS_MemoryBaseReg(ins);// base address register
 		REG pin_index_reg = INS_MemoryIndexReg(ins);// index address register

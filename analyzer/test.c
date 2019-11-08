@@ -2,6 +2,11 @@
 #include<string.h>
 #include<stdlib.h>
 char * readstr(char *str){
+
+	float a;
+	double b;
+	scanf("%f", &a);
+	b = a;
 	char c;
 	int i=0;
 	while((c=getchar()) !='\n'){
