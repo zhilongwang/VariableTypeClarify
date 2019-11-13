@@ -1,0 +1,492 @@
+upointer
+83 6d f4 01                   subl  $0x1, -0xc(%ebp)
+8b 45 f4                      movl  -0xc(%ebp), %eax
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 c0 01                      add $0x1, %eax
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 c0 01                      add $0x1, %eax
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 c0 01                      add $0x1, %eax
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 c0 01                      add $0x1, %eax
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+75 06                         jnz 0x804891e
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+_Bool
+80 7d f3 00                   cmpb  $0x0, -0xd(%ebp)
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+74 07                         jz 0x8048950
+eb 39                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+74 07                         jz 0x8048950
+eb 39                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+75 1c                         jnz 0x804892e
+75 22                         jnz 0x804895a
+75 06                         jnz 0x8048949
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+74 07                         jz 0x8048950
+eb 39                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+74 07                         jz 0x8048950
+eb 39                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+75 1c                         jnz 0x804892e
+75 22                         jnz 0x804895a
+74 0a                         jz 0x804896e
+75 1e                         jnz 0x804898c
+74 14                         jz 0x804898a
+74 07                         jz 0x804898a
+eb 07                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+upointer
+3b 45 ec                      cmpl  -0x14(%ebp), %eax
+74 14                         jz 0x804898a
+74 07                         jz 0x804898a
+eb 07                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+75 06                         jnz 0x804891e
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+75 1c                         jnz 0x804892e
+75 22                         jnz 0x804895a
+75 06                         jnz 0x8048949
+74 07                         jz 0x8048950
+eb 39                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+_Bool
+80 7d f3 00                   cmpb  $0x0, -0xd(%ebp)
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+75 1c                         jnz 0x804892e
+75 22                         jnz 0x804895a
+75 06                         jnz 0x8048949
+74 07                         jz 0x8048950
+eb 39                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+74 07                         jz 0x8048950
+eb 39                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+75 06                         jnz 0x804891e
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+75 1c                         jnz 0x804892e
+75 22                         jnz 0x804895a
+75 06                         jnz 0x8048949
+74 07                         jz 0x8048950
+eb 39                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+_Bool
+80 7d f3 00                   cmpb  $0x0, -0xd(%ebp)
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+75 1c                         jnz 0x804892e
+75 22                         jnz 0x804895a
+75 06                         jnz 0x8048949
+74 07                         jz 0x8048950
+eb 39                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+74 07                         jz 0x8048950
+eb 39                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+75 1c                         jnz 0x804892e
+75 06                         jnz 0x804891e
+e9 8c 00 00 00                jmp 0x80489b4
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+75 06                         jnz 0x804891e
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+75 1c                         jnz 0x804892e
+75 22                         jnz 0x804895a
+75 06                         jnz 0x8048949
+eb 64                         jmp 0x80489b4
+_Bool
+80 7d f3 00                   cmpb  $0x0, -0xd(%ebp)
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+75 1c                         jnz 0x804892e
+75 22                         jnz 0x804895a
+75 06                         jnz 0x8048949
+eb 64                         jmp 0x80489b4
+upointer
+3b 45 ec                      cmpl  -0x14(%ebp), %eax
+74 14                         jz 0x804898a
+eb 07                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+upointer
+3b 45 ec                      cmpl  -0x14(%ebp), %eax
+74 14                         jz 0x804898a
+eb 07                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+upointer
+3b 45 ec                      cmpl  -0x14(%ebp), %eax
+74 14                         jz 0x804898a
+74 07                         jz 0x804898a
+eb 2a                         jmp 0x80489b4
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+75 06                         jnz 0x804891e
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+75 1c                         jnz 0x804892e
+75 06                         jnz 0x804891e
+74 0a                         jz 0x8048928
+e9 8c 00 00 00                jmp 0x80489b4
+_Bool
+80 7d f3 00                   cmpb  $0x0, -0xd(%ebp)
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+75 1c                         jnz 0x804892e
+75 06                         jnz 0x804891e
+74 0a                         jz 0x8048928
+e9 8c 00 00 00                jmp 0x80489b4
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+75 06                         jnz 0x804891e
+74 0a                         jz 0x8048928
+e9 8c 00 00 00                jmp 0x80489b4
+upointer
+83 6d f4 01                   subl  $0x1, -0xc(%ebp)
+8b 45 f4                      movl  -0xc(%ebp), %eax
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 c0 01                      add $0x1, %eax
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 c0 01                      add $0x1, %eax
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+75 06                         jnz 0x804891e
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+_Bool
+80 7d f3 00                   cmpb  $0x0, -0xd(%ebp)
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+upointer
+83 6d f4 01                   subl  $0x1, -0xc(%ebp)
+8b 45 f4                      movl  -0xc(%ebp), %eax
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 c0 01                      add $0x1, %eax
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 c0 01                      add $0x1, %eax
+upointer
+3b 45 ec                      cmpl  -0x14(%ebp), %eax
+74 14                         jz 0x804898a
+eb 07                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+upointer
+3b 45 ec                      cmpl  -0x14(%ebp), %eax
+74 14                         jz 0x804898a
+eb 07                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+75 1c                         jnz 0x804892e
+75 22                         jnz 0x804895a
+74 0a                         jz 0x804896e
+75 1e                         jnz 0x804898c
+74 14                         jz 0x804898a
+74 07                         jz 0x804898a
+eb 2a                         jmp 0x80489b4
+upointer
+3b 45 ec                      cmpl  -0x14(%ebp), %eax
+74 14                         jz 0x804898a
+74 07                         jz 0x804898a
+eb 2a                         jmp 0x80489b4
+upointer
+83 6d f4 01                   subl  $0x1, -0xc(%ebp)
+8b 45 f4                      movl  -0xc(%ebp), %eax
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 c0 01                      add $0x1, %eax
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+75 06                         jnz 0x804891e
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+_Bool
+80 7d f3 00                   cmpb  $0x0, -0xd(%ebp)
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+75 06                         jnz 0x804891e
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+_Bool
+80 7d f3 00                   cmpb  $0x0, -0xd(%ebp)
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+upointer
+3b 45 ec                      cmpl  -0x14(%ebp), %eax
+74 14                         jz 0x804898a
+eb 07                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+75 1c                         jnz 0x804892e
+75 06                         jnz 0x804891e
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+_Bool
+80 7d f2 00                   cmpb  $0x0, -0xe(%ebp)
+75 06                         jnz 0x804891e
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+_Bool
+80 7d f3 00                   cmpb  $0x0, -0xd(%ebp)
+74 0a                         jz 0x8048928
+eb 65                         jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
+7e 13                         jle 0x8048908
+7f 09                         jnle 0x8048908
+e9 8b 00 00 00                jmp 0x8048993
+74 0f                         jz 0x80489b0
+0f 85 3b ff ff ff             jnz 0x80488eb
