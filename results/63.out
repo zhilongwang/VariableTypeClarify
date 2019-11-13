@@ -1,0 +1,1175 @@
+int
+8b 44 24 18                   movl  0x18(%esp), %eax
+89 44 24 14                   movl  %eax, 0x14(%esp)
+8b 44 24 14                   movl  0x14(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 74 24 30                   movl  0x30(%esp), %esi
+89 f0                         mov %esi, %eax
+89 f5                         mov %esi, %ebp
+09 c8                         or %ecx, %eax
+0f af e9                      imul %ecx, %ebp
+3d ff ff 00 00                cmp $0xffff, %eax
+76 08                         jbe 0x805cd72
+0f 85 d0 01 00 00             jnz 0x805cf50
+0f 84 22 02 00 00             jz 0x805cfb0
+0f 85 34 02 00 00             jnz 0x805cfd0
+89 ea                         mov %ebp, %edx
+e8 d1 d6 ff ff                calll  0x805a490
+55                            pushl  %ebp
+8d 4a 13                      leal  0x13(%edx), %ecx
+56                            pushl  %esi
+e8 da ef fe ff                calll  0x8049476
+int
+8b 44 24 14                   movl  0x14(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 74 24 30                   movl  0x30(%esp), %esi
+89 f0                         mov %esi, %eax
+89 f5                         mov %esi, %ebp
+09 c8                         or %ecx, %eax
+0f af e9                      imul %ecx, %ebp
+3d ff ff 00 00                cmp $0xffff, %eax
+76 08                         jbe 0x805cd72
+0f 85 d0 01 00 00             jnz 0x805cf50
+0f 84 22 02 00 00             jz 0x805cfb0
+0f 85 34 02 00 00             jnz 0x805cfd0
+89 ea                         mov %ebp, %edx
+e8 d1 d6 ff ff                calll  0x805a490
+55                            pushl  %ebp
+8d 4a 13                      leal  0x13(%edx), %ecx
+56                            pushl  %esi
+e8 da ef fe ff                calll  0x8049476
+8b 2c 24                      movl  (%esp), %ebp
+c3                            retl  
+int
+3b 44 24 14                   cmpl  0x14(%esp), %eax
+7c c9                         jl 0x8048a75
+e8 a5 42 01 00                calll  0x805cd40
+e8 37 ba fe ff                calll  0x8048780
+8b 1c 24                      movl  (%esp), %ebx
+c3                            retl  
+81 c3 b7 c2 07 00             add $0x7c2b7, %ebx
+83 ec 1c                      sub $0x1c, %esp
+76 08                         jbe 0x805cd72
+0f 85 d0 01 00 00             jnz 0x805cf50
+0f 84 22 02 00 00             jz 0x805cfb0
+0f 85 34 02 00 00             jnz 0x805cfd0
+8d bb 20 05 00 00             leal  0x520(%ebx), %edi
+89 f8                         mov %edi, %eax
+e8 d1 d6 ff ff                calll  0x805a490
+57                            pushl  %edi
+53                            pushl  %ebx
+e8 da ef fe ff                calll  0x8049476
+8b 2c 24                      movl  (%esp), %ebp
+c3                            retl  
+int
+8b 44 24 18                   movl  0x18(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 74 24 30                   movl  0x30(%esp), %esi
+89 f0                         mov %esi, %eax
+89 f5                         mov %esi, %ebp
+09 c8                         or %ecx, %eax
+0f af e9                      imul %ecx, %ebp
+3d ff ff 00 00                cmp $0xffff, %eax
+76 08                         jbe 0x805cd72
+0f 85 d0 01 00 00             jnz 0x805cf50
+0f 84 22 02 00 00             jz 0x805cfb0
+0f 85 34 02 00 00             jnz 0x805cfd0
+89 ea                         mov %ebp, %edx
+e8 d1 d6 ff ff                calll  0x805a490
+55                            pushl  %ebp
+8d 4a 13                      leal  0x13(%edx), %ecx
+56                            pushl  %esi
+e8 da ef fe ff                calll  0x8049476
+8b 2c 24                      movl  (%esp), %ebp
+c3                            retl  
+int
+83 44 24 1c 01                addl  $0x1, 0x1c(%esp)
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+83 44 24 1c 01                addl  $0x1, 0x1c(%esp)
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+83 44 24 1c 01                addl  $0x1, 0x1c(%esp)
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+int
+3b 44 24 14                   cmpl  0x14(%esp), %eax
+7c c9                         jl 0x8048a75
+e8 a5 42 01 00                calll  0x805cd40
+e8 37 ba fe ff                calll  0x8048780
+8b 1c 24                      movl  (%esp), %ebx
+c3                            retl  
+81 c3 b7 c2 07 00             add $0x7c2b7, %ebx
+83 ec 1c                      sub $0x1c, %esp
+76 08                         jbe 0x805cd72
+0f 85 d0 01 00 00             jnz 0x805cf50
+0f 84 22 02 00 00             jz 0x805cfb0
+0f 85 34 02 00 00             jnz 0x805cfd0
+8d bb 20 05 00 00             leal  0x520(%ebx), %edi
+89 f8                         mov %edi, %eax
+e8 d1 d6 ff ff                calll  0x805a490
+57                            pushl  %edi
+53                            pushl  %ebx
+e8 da ef fe ff                calll  0x8049476
+8b 2c 24                      movl  (%esp), %ebp
+c3                            retl  
+int
+8b 44 24 18                   movl  0x18(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 74 24 30                   movl  0x30(%esp), %esi
+89 f0                         mov %esi, %eax
+89 f5                         mov %esi, %ebp
+09 c8                         or %ecx, %eax
+0f af e9                      imul %ecx, %ebp
+3d ff ff 00 00                cmp $0xffff, %eax
+76 08                         jbe 0x805cd72
+0f 85 d0 01 00 00             jnz 0x805cf50
+0f 84 22 02 00 00             jz 0x805cfb0
+0f 85 34 02 00 00             jnz 0x805cfd0
+89 ea                         mov %ebp, %edx
+e8 d1 d6 ff ff                calll  0x805a490
+55                            pushl  %ebp
+8d 4a 13                      leal  0x13(%edx), %ecx
+56                            pushl  %esi
+e8 da ef fe ff                calll  0x8049476
+8b 2c 24                      movl  (%esp), %ebp
+c3                            retl  
+int
+83 44 24 1c 01                addl  $0x1, 0x1c(%esp)
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+83 44 24 1c 01                addl  $0x1, 0x1c(%esp)
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+int
+3b 44 24 14                   cmpl  0x14(%esp), %eax
+7c c9                         jl 0x8048a75
+e8 a5 42 01 00                calll  0x805cd40
+e8 37 ba fe ff                calll  0x8048780
+8b 1c 24                      movl  (%esp), %ebx
+c3                            retl  
+81 c3 b7 c2 07 00             add $0x7c2b7, %ebx
+83 ec 1c                      sub $0x1c, %esp
+76 08                         jbe 0x805cd72
+0f 85 d0 01 00 00             jnz 0x805cf50
+0f 84 22 02 00 00             jz 0x805cfb0
+0f 85 34 02 00 00             jnz 0x805cfd0
+8d bb 20 05 00 00             leal  0x520(%ebx), %edi
+89 f8                         mov %edi, %eax
+e8 d1 d6 ff ff                calll  0x805a490
+57                            pushl  %edi
+53                            pushl  %ebx
+e8 da ef fe ff                calll  0x8049476
+8b 2c 24                      movl  (%esp), %ebp
+c3                            retl  
+int
+8b 44 24 18                   movl  0x18(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 74 24 30                   movl  0x30(%esp), %esi
+89 f0                         mov %esi, %eax
+89 f5                         mov %esi, %ebp
+09 c8                         or %ecx, %eax
+0f af e9                      imul %ecx, %ebp
+3d ff ff 00 00                cmp $0xffff, %eax
+76 08                         jbe 0x805cd72
+0f 85 d0 01 00 00             jnz 0x805cf50
+0f 84 22 02 00 00             jz 0x805cfb0
+0f 85 34 02 00 00             jnz 0x805cfd0
+89 ea                         mov %ebp, %edx
+e8 d1 d6 ff ff                calll  0x805a490
+55                            pushl  %ebp
+8d 4a 13                      leal  0x13(%edx), %ecx
+56                            pushl  %esi
+e8 da ef fe ff                calll  0x8049476
+8b 2c 24                      movl  (%esp), %ebp
+c3                            retl  
+int
+3b 44 24 14                   cmpl  0x14(%esp), %eax
+7c c9                         jl 0x8048a75
+e8 9a fd ff ff                calll  0x8048874
+e8 a4 44 01 00                calll  0x805cd40
+e8 37 ba fe ff                calll  0x8048780
+8b 1c 24                      movl  (%esp), %ebx
+c3                            retl  
+81 c3 b7 c2 07 00             add $0x7c2b7, %ebx
+83 ec 1c                      sub $0x1c, %esp
+76 08                         jbe 0x805cd72
+0f 85 d0 01 00 00             jnz 0x805cf50
+0f 84 22 02 00 00             jz 0x805cfb0
+0f 85 34 02 00 00             jnz 0x805cfd0
+8d bb 20 05 00 00             leal  0x520(%ebx), %edi
+89 f8                         mov %edi, %eax
+e8 d1 d6 ff ff                calll  0x805a490
+57                            pushl  %edi
+53                            pushl  %ebx
+e8 da ef fe ff                calll  0x8049476
+8b 2c 24                      movl  (%esp), %ebp
+int
+8b 44 24 18                   movl  0x18(%esp), %eax
+89 44 24 08                   movl  %eax, 0x8(%esp)
+8b 5d 10                      movl  0x10(%ebp), %ebx
+8d 43 ff                      leal  -0x1(%ebx), %eax
+89 45 ec                      movl  %eax, -0x14(%ebp)
+0f af 45 10                   imull  0x10(%ebp), %eax
+89 04 24                      movl  %eax, (%esp)
+53                            pushl  %ebx
+8b 74 24 30                   movl  0x30(%esp), %esi
+89 f0                         mov %esi, %eax
+89 f5                         mov %esi, %ebp
+09 c8                         or %ecx, %eax
+0f af e9                      imul %ecx, %ebp
+3d ff ff 00 00                cmp $0xffff, %eax
+76 08                         jbe 0x805cd72
+0f 85 d0 01 00 00             jnz 0x805cf50
+0f 84 22 02 00 00             jz 0x805cfb0
+0f 85 34 02 00 00             jnz 0x805cfd0
+89 ea                         mov %ebp, %edx
+e8 d1 d6 ff ff                calll  0x805a490
+int
+8b 44 24 14                   movl  0x14(%esp), %eax
+89 44 24 04                   movl  %eax, 0x4(%esp)
+8b 45 0c                      movl  0xc(%ebp), %eax
+3b 45 0c                      cmpl  0xc(%ebp), %eax
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+upointer
+8b 44 24 10                   movl  0x10(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 45 08                      movl  0x8(%ebp), %eax
+01 d0                         add %edx, %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+01 d0                         add %edx, %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+01 d0                         add %edx, %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+01 d0                         add %edx, %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+01 d0                         add %edx, %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+01 d0                         add %edx, %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+01 d0                         add %edx, %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+01 d0                         add %edx, %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+01 d0                         add %edx, %eax
+int
+8b 55 f0                      movl  -0x10(%ebp), %edx
+c1 e2 02                      shl $0x2, %edx
+01 d0                         add %edx, %eax
+01 d0                         add %edx, %eax
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+int
+83 45 f0 01                   addl  $0x1, -0x10(%ebp)
+8b 45 f0                      movl  -0x10(%ebp), %eax
+8b 55 f0                      movl  -0x10(%ebp), %edx
+c1 e2 02                      shl $0x2, %edx
+01 d0                         add %edx, %eax
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+8b 55 f0                      movl  -0x10(%ebp), %edx
+83 ea 01                      sub $0x1, %edx
+8b 45 f0                      movl  -0x10(%ebp), %eax
+7e 5e                         jle 0x80489f0
+83 45 f0 01                   addl  $0x1, -0x10(%ebp)
+8b 45 f0                      movl  -0x10(%ebp), %eax
+0f 8c c0 fe ff ff             jl 0x80488c0
+8b 55 f0                      movl  -0x10(%ebp), %edx
+c1 e2 02                      shl $0x2, %edx
+01 d0                         add %edx, %eax
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+int
+83 45 f0 01                   addl  $0x1, -0x10(%ebp)
+8b 45 f0                      movl  -0x10(%ebp), %eax
+8b 55 f0                      movl  -0x10(%ebp), %edx
+c1 e2 02                      shl $0x2, %edx
+01 d0                         add %edx, %eax
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+8b 55 f0                      movl  -0x10(%ebp), %edx
+83 ea 01                      sub $0x1, %edx
+8b 45 f0                      movl  -0x10(%ebp), %eax
+7e 5e                         jle 0x80489f0
+83 45 f0 01                   addl  $0x1, -0x10(%ebp)
+8b 45 f0                      movl  -0x10(%ebp), %eax
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 40                         jle 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+e9 ee 00 00 00                jmp 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+e9 ee 00 00 00                jmp 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+e9 ee 00 00 00                jmp 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 5e                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+e9 ee 00 00 00                jmp 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+int
+83 45 f4 01                   addl  $0x1, -0xc(%ebp)
+8b 45 f4                      movl  -0xc(%ebp), %eax
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+8b 45 f4                      movl  -0xc(%ebp), %eax
+0f af c2                      imul %edx, %eax
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 e8 01                      sub $0x1, %eax
+89 c2                         mov %eax, %edx
+0f af c2                      imul %edx, %eax
+01 c2                         add %eax, %edx
+7e 3e                         jle 0x804898c
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+8b 45 f4                      movl  -0xc(%ebp), %eax
+74 23                         jz 0x8048902
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+e9 ee 00 00 00                jmp 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+e9 ee 00 00 00                jmp 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+int
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 e8 01                      sub $0x1, %eax
+89 c2                         mov %eax, %edx
+0f af c2                      imul %edx, %eax
+01 c2                         add %eax, %edx
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+e9 ee 00 00 00                jmp 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+e9 ee 00 00 00                jmp 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+e9 ee 00 00 00                jmp 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+int
+83 45 f0 01                   addl  $0x1, -0x10(%ebp)
+8b 45 f0                      movl  -0x10(%ebp), %eax
+8b 55 f0                      movl  -0x10(%ebp), %edx
+c1 e2 02                      shl $0x2, %edx
+01 d0                         add %edx, %eax
+8b 45 f0                      movl  -0x10(%ebp), %eax
+83 45 f0 01                   addl  $0x1, -0x10(%ebp)
+8b 45 f0                      movl  -0x10(%ebp), %eax
+8b 55 f0                      movl  -0x10(%ebp), %edx
+c1 e2 02                      shl $0x2, %edx
+01 d0                         add %edx, %eax
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+75 3a                         jnz 0x8048948
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 58                         jle 0x80489f0
+8b 4d f0                      movl  -0x10(%ebp), %ecx
+int
+83 45 f0 01                   addl  $0x1, -0x10(%ebp)
+8b 45 f0                      movl  -0x10(%ebp), %eax
+8b 55 f0                      movl  -0x10(%ebp), %edx
+c1 e2 02                      shl $0x2, %edx
+01 d0                         add %edx, %eax
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+75 3a                         jnz 0x8048948
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 58                         jle 0x80489f0
+8b 4d f0                      movl  -0x10(%ebp), %ecx
+83 e9 01                      sub $0x1, %ecx
+8b 45 f0                      movl  -0x10(%ebp), %eax
+8b 45 f0                      movl  -0x10(%ebp), %eax
+83 45 f0 01                   addl  $0x1, -0x10(%ebp)
+8b 45 f0                      movl  -0x10(%ebp), %eax
+0f 8c c0 fe ff ff             jl 0x80488c0
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+e9 34 01 00 00                jmp 0x80489f4
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+int
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 e8 01                      sub $0x1, %eax
+89 c6                         mov %eax, %esi
+0f af c6                      imul %esi, %eax
+01 c6                         add %eax, %esi
+int
+83 45 f4 01                   addl  $0x1, -0xc(%ebp)
+8b 45 f4                      movl  -0xc(%ebp), %eax
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+8b 45 f4                      movl  -0xc(%ebp), %eax
+0f af c2                      imul %edx, %eax
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 e8 01                      sub $0x1, %eax
+89 c2                         mov %eax, %edx
+0f af c2                      imul %edx, %eax
+01 c2                         add %eax, %edx
+7e 3e                         jle 0x804898c
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+8b 45 f4                      movl  -0xc(%ebp), %eax
+74 23                         jz 0x8048902
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+int
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 e8 01                      sub $0x1, %eax
+89 c2                         mov %eax, %edx
+0f af c2                      imul %edx, %eax
+01 c2                         add %eax, %edx
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+int
+83 45 f0 01                   addl  $0x1, -0x10(%ebp)
+8b 45 f0                      movl  -0x10(%ebp), %eax
+8b 55 f0                      movl  -0x10(%ebp), %edx
+c1 e2 02                      shl $0x2, %edx
+01 d0                         add %edx, %eax
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+75 3a                         jnz 0x8048948
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 58                         jle 0x80489f0
+8b 4d f0                      movl  -0x10(%ebp), %ecx
+83 e9 01                      sub $0x1, %ecx
+8b 45 f0                      movl  -0x10(%ebp), %eax
+8b 45 f0                      movl  -0x10(%ebp), %eax
+83 45 f0 01                   addl  $0x1, -0x10(%ebp)
+8b 45 f0                      movl  -0x10(%ebp), %eax
+0f 8c c0 fe ff ff             jl 0x80488c0
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+74 23                         jz 0x8048902
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+int
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 e8 01                      sub $0x1, %eax
+89 c6                         mov %eax, %esi
+0f af c6                      imul %esi, %eax
+01 c6                         add %eax, %esi
+int
+83 45 f0 01                   addl  $0x1, -0x10(%ebp)
+8b 45 f0                      movl  -0x10(%ebp), %eax
+8b 55 f0                      movl  -0x10(%ebp), %edx
+c1 e2 02                      shl $0x2, %edx
+01 d0                         add %edx, %eax
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+75 3a                         jnz 0x8048948
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 58                         jle 0x80489f0
+8b 4d f0                      movl  -0x10(%ebp), %ecx
+83 e9 01                      sub $0x1, %ecx
+8b 45 f0                      movl  -0x10(%ebp), %eax
+8b 45 f0                      movl  -0x10(%ebp), %eax
+83 45 f0 01                   addl  $0x1, -0x10(%ebp)
+8b 45 f0                      movl  -0x10(%ebp), %eax
+0f 8c c0 fe ff ff             jl 0x80488c0
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 40                         jle 0x8048948
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+75 3a                         jnz 0x8048948
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 3e                         jle 0x804898c
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+75 38                         jnz 0x804898c
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+int
+83 7d f4 00                   cmpl  $0x0, -0xc(%ebp)
+7e 5e                         jle 0x80489f0
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+int
+83 7d f0 00                   cmpl  $0x0, -0x10(%ebp)
+7e 58                         jle 0x80489f0
+0f 8c c0 fe ff ff             jl 0x80488c0
+0f 8c a4 fe ff ff             jl 0x80488b4
+int
+8b 45 f4                      movl  -0xc(%ebp), %eax
+83 e8 01                      sub $0x1, %eax
+89 c6                         mov %eax, %esi
+0f af c6                      imul %esi, %eax
+01 c6                         add %eax, %esi
