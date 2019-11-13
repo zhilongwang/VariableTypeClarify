@@ -1,0 +1,91 @@
+int
+8b 45 e4                      movl  -0x1c(%ebp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 74 24 30                   movl  0x30(%esp), %esi
+89 f0                         mov %esi, %eax
+89 f5                         mov %esi, %ebp
+09 c8                         or %ecx, %eax
+0f af e9                      imul %ecx, %ebp
+3d ff ff 00 00                cmp $0xffff, %eax
+76 08                         jbe 0x805d062
+0f 85 d0 01 00 00             jnz 0x805d240
+0f 84 22 02 00 00             jz 0x805d2a0
+0f 85 34 02 00 00             jnz 0x805d2c0
+89 ea                         mov %ebp, %edx
+e8 d1 d6 ff ff                calll  0x805a780
+55                            pushl  %ebp
+8d 4a 13                      leal  0x13(%edx), %ecx
+56                            pushl  %esi
+e8 ca ee fe ff                calll  0x8049656
+8b 2c 24                      movl  (%esp), %ebp
+c3                            retl  
+int
+8b 45 ec                      movl  -0x14(%ebp), %eax
+c1 e0 02                      shl $0x2, %eax
+89 04 24                      movl  %eax, (%esp)
+8b 74 24 20                   movl  0x20(%esp), %esi
+8d 46 13                      leal  0x13(%esi), %eax
+83 f8 0f                      cmp $0xf, %eax
+0f 87 a9 00 00 00             jnbe 0x805c578
+83 e0 f0                      and $0xfffffff0, %eax
+83 f8 df                      cmp $0xffffffdf, %eax
+0f 97 c2                      setnbe %dl
+e9 50 ff ff ff                jmp 0x805c4d6
+39 f0                         cmp %esi, %eax
+0f 82 72 01 00 00             jb 0x805c650
+84 d2                         test %dl, %dl
+0f 85 6a 01 00 00             jnz 0x805c650
+83 e8 01                      sub $0x1, %eax
+c1 e8 04                      shr $0x4, %eax
+0f 84 95 00 00 00             jz 0x805c590
+0f 82 c9 00 00 00             jb 0x805c5d0
+0f 84 29 ff ff ff             jz 0x805c507
+int
+8b 45 ec                      movl  -0x14(%ebp), %eax
+c1 e0 02                      shl $0x2, %eax
+89 04 24                      movl  %eax, (%esp)
+8b 74 24 20                   movl  0x20(%esp), %esi
+8d 46 13                      leal  0x13(%esi), %eax
+83 f8 0f                      cmp $0xf, %eax
+0f 87 a9 00 00 00             jnbe 0x805c578
+83 e0 f0                      and $0xfffffff0, %eax
+83 f8 df                      cmp $0xffffffdf, %eax
+0f 97 c2                      setnbe %dl
+e9 50 ff ff ff                jmp 0x805c4d6
+39 f0                         cmp %esi, %eax
+0f 82 72 01 00 00             jb 0x805c650
+84 d2                         test %dl, %dl
+0f 85 6a 01 00 00             jnz 0x805c650
+83 e8 01                      sub $0x1, %eax
+c1 e8 04                      shr $0x4, %eax
+0f 84 95 00 00 00             jz 0x805c590
+0f 82 c9 00 00 00             jb 0x805c5d0
+0f 84 29 ff ff ff             jz 0x805c507
+int
+8b 55 ec                      movl  -0x14(%ebp), %edx
+89 10                         movl  %edx, (%eax)
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+50                            pushl  %eax
+ff 74 24 1c                   pushl  0x1c(%esp)
+85 d2                         test %edx, %edx
+74 08                         jz 0x804f070
+74 01                         jz 0x804f092
+74 07                         jz 0x804f09e
+75 69                         jnz 0x804f111
+0f 84 94 00 00 00             jz 0x804f1b0
+74 01                         jz 0x804f139
+74 07                         jz 0x804f145
+0f 85 5a ff ff ff             jnz 0x804f0b0
+0f 84 bf 00 00 00             jz 0x804f178
+ff 74 24 38                   pushl  0x38(%esp)
+e8 29 ed ff ff                calll  0x8048780
+8b 1c 24                      movl  (%esp), %ebx
+c3                            retl  
+81 c3 a9 f5 08 00             add $0x8f5a9, %ebx
+int
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+50                            pushl  %eax
+ff 74 24 1c                   pushl  0x1c(%esp)
+ff 74 24 38                   pushl  0x38(%esp)
+ff 74 24 3c                   pushl  0x3c(%esp)
+8b 5c 24 04                   movl  0x4(%esp), %ebx

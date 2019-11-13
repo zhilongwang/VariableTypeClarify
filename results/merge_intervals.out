@@ -1,0 +1,28 @@
+int
+8b 55 ec                      movl  -0x14(%ebp), %edx
+89 10                         movl  %edx, (%eax)
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+50                            pushl  %eax
+ff 74 24 1c                   pushl  0x1c(%esp)
+85 d2                         test %edx, %edx
+74 08                         jz 0x804f290
+74 01                         jz 0x804f2b2
+74 07                         jz 0x804f2be
+75 69                         jnz 0x804f331
+0f 84 94 00 00 00             jz 0x804f3d0
+74 01                         jz 0x804f359
+74 07                         jz 0x804f365
+0f 85 5a ff ff ff             jnz 0x804f2d0
+0f 84 bf 00 00 00             jz 0x804f398
+ff 74 24 38                   pushl  0x38(%esp)
+e8 39 eb ff ff                calll  0x8048780
+8b 1c 24                      movl  (%esp), %ebx
+c3                            retl  
+81 c3 b9 f3 08 00             add $0x8f3b9, %ebx
+int
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+50                            pushl  %eax
+ff 74 24 1c                   pushl  0x1c(%esp)
+ff 74 24 38                   pushl  0x38(%esp)
+ff 74 24 3c                   pushl  0x3c(%esp)
+8b 5c 24 04                   movl  0x4(%esp), %ebx

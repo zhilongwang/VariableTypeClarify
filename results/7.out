@@ -1,0 +1,21 @@
+int
+8b 44 24 1c                   movl  0x1c(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 45 08                      movl  0x8(%ebp), %eax
+85 c0                         test %eax, %eax
+79 2e                         jns 0x80489ed
+8b 45 08                      movl  0x8(%ebp), %eax
+f7 d8                         neg %eax
+89 04 24                      movl  %eax, (%esp)
+e8 a1 fe ff ff                calll  0x8048874
+8b 45 08                      movl  0x8(%ebp), %eax
+99                            cdq 
+89 45 f8                      movl  %eax, -0x8(%ebp)
+89 55 fc                      movl  %edx, -0x4(%ebp)
+8b 55 f8                      movl  -0x8(%ebp), %edx
+89 10                         movl  %edx, (%eax)
+83 7d fc 00                   cmpl  $0x0, -0x4(%ebp)
+7f 24                         jnle 0x80488b6
+83 7d fc 00                   cmpl  $0x0, -0x4(%ebp)
+78 09                         js 0x80488a1
+83 7d fc ff                   cmpl  $0xffffffff, -0x4(%ebp)

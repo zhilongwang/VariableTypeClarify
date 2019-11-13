@@ -1,0 +1,263 @@
+upointer
+8b 45 f4                      movl  -0xc(%ebp), %eax
+89 44 24 04                   movl  %eax, 0x4(%esp)
+8b 55 0c                      movl  0xc(%ebp), %edx
+89 54 24 04                   movl  %edx, 0x4(%esp)
+8b 45 0c                      movl  0xc(%ebp), %eax
+8b 45 0c                      movl  0xc(%ebp), %eax
+8b 45 0c                      movl  0xc(%ebp), %eax
+8b 45 0c                      movl  0xc(%ebp), %eax
+8b 45 0c                      movl  0xc(%ebp), %eax
+8b 45 0c                      movl  0xc(%ebp), %eax
+8b 55 0c                      movl  0xc(%ebp), %edx
+89 54 24 04                   movl  %edx, 0x4(%esp)
+8b 55 0c                      movl  0xc(%ebp), %edx
+89 54 24 04                   movl  %edx, 0x4(%esp)
+8b 45 0c                      movl  0xc(%ebp), %eax
+8b 45 0c                      movl  0xc(%ebp), %eax
+8b 45 0c                      movl  0xc(%ebp), %eax
+8b 45 0c                      movl  0xc(%ebp), %eax
+8b 45 0c                      movl  0xc(%ebp), %eax
+8b 45 0c                      movl  0xc(%ebp), %eax
+upointer
+8b 55 f4                      movl  -0xc(%ebp), %edx
+89 50 04                      movl  %edx, 0x4(%eax)
+8b 40 04                      movl  0x4(%eax), %eax
+85 c0                         test %eax, %eax
+0f 95 c0                      setnz %al
+84 c0                         test %al, %al
+75 d4                         jnz 0x8048a80
+e8 d3 fe ff ff                calll  0x804895f
+8b 50 04                      movl  0x4(%eax), %edx
+89 50 08                      movl  %edx, 0x8(%eax)
+8b 40 08                      movl  0x8(%eax), %eax
+c3                            retl  
+e8 f4 6f 00 00                calll  0x804fa90
+e8 ea 8c ff ff                calll  0x8048780
+8b 1c 24                      movl  (%esp), %ebx
+c3                            retl  
+81 c3 6a 95 08 00             add $0x8956a, %ebx
+83 ec 08                      sub $0x8, %esp
+8d 44 24 14                   leal  0x14(%esp), %eax
+83 ec 04                      sub $0x4, %esp
+upointer
+8b 55 f4                      movl  -0xc(%ebp), %edx
+89 50 08                      movl  %edx, 0x8(%eax)
+8b 40 08                      movl  0x8(%eax), %eax
+85 c0                         test %eax, %eax
+74 0e                         jz 0x80488d4
+8b 40 08                      movl  0x8(%eax), %eax
+eb 09                         jmp 0x80488dd
+74 15                         jz 0x8048905
+e8 6f ff ff ff                calll  0x8048874
+74 15                         jz 0x8048899
+e8 db ff ff ff                calll  0x8048874
+74 15                         jz 0x8048899
+e8 cb 38 01 00                calll  0x805c170
+e8 08 c6 fe ff                calll  0x8048780
+8b 1c 24                      movl  (%esp), %ebx
+c3                            retl  
+81 c3 88 ce 07 00             add $0x7ce88, %ebx
+83 ec 10                      sub $0x10, %esp
+0f 85 6d 01 00 00             jnz 0x805c300
+0f 87 a9 00 00 00             jnbe 0x805c248
+upointer
+8b 55 f4                      movl  -0xc(%ebp), %edx
+89 50 04                      movl  %edx, 0x4(%eax)
+8b 40 04                      movl  0x4(%eax), %eax
+85 c0                         test %eax, %eax
+0f 95 c0                      setnz %al
+84 c0                         test %al, %al
+75 d4                         jnz 0x8048a80
+e8 d3 fe ff ff                calll  0x804895f
+8b 50 04                      movl  0x4(%eax), %edx
+89 50 08                      movl  %edx, 0x8(%eax)
+8b 40 08                      movl  0x8(%eax), %eax
+c3                            retl  
+e8 f4 6f 00 00                calll  0x804fa90
+e8 ea 8c ff ff                calll  0x8048780
+8b 1c 24                      movl  (%esp), %ebx
+c3                            retl  
+81 c3 6a 95 08 00             add $0x8956a, %ebx
+83 ec 08                      sub $0x8, %esp
+8d 44 24 14                   leal  0x14(%esp), %eax
+83 ec 04                      sub $0x4, %esp
+upointer
+8b 55 f4                      movl  -0xc(%ebp), %edx
+89 50 08                      movl  %edx, 0x8(%eax)
+8b 40 08                      movl  0x8(%eax), %eax
+85 c0                         test %eax, %eax
+74 0e                         jz 0x80488d4
+8b 40 08                      movl  0x8(%eax), %eax
+eb 09                         jmp 0x80488dd
+74 15                         jz 0x8048905
+upointer
+8b 55 f4                      movl  -0xc(%ebp), %edx
+89 50 04                      movl  %edx, 0x4(%eax)
+8b 40 04                      movl  0x4(%eax), %eax
+85 c0                         test %eax, %eax
+0f 95 c0                      setnz %al
+84 c0                         test %al, %al
+75 d4                         jnz 0x8048a80
+e8 d3 fe ff ff                calll  0x804895f
+8b 50 04                      movl  0x4(%eax), %edx
+89 50 08                      movl  %edx, 0x8(%eax)
+8b 40 08                      movl  0x8(%eax), %eax
+c3                            retl  
+e8 f4 6f 00 00                calll  0x804fa90
+e8 ea 8c ff ff                calll  0x8048780
+8b 1c 24                      movl  (%esp), %ebx
+c3                            retl  
+81 c3 6a 95 08 00             add $0x8956a, %ebx
+83 ec 08                      sub $0x8, %esp
+8d 44 24 14                   leal  0x14(%esp), %eax
+83 ec 04                      sub $0x4, %esp
+upointer
+8b 55 f4                      movl  -0xc(%ebp), %edx
+89 50 08                      movl  %edx, 0x8(%eax)
+8b 40 08                      movl  0x8(%eax), %eax
+85 c0                         test %eax, %eax
+74 0e                         jz 0x80488d4
+8b 40 08                      movl  0x8(%eax), %eax
+eb 09                         jmp 0x80488dd
+74 15                         jz 0x8048905
+e8 6f ff ff ff                calll  0x8048874
+74 15                         jz 0x8048899
+e8 cb 38 01 00                calll  0x805c170
+e8 08 c6 fe ff                calll  0x8048780
+8b 1c 24                      movl  (%esp), %ebx
+c3                            retl  
+81 c3 88 ce 07 00             add $0x7ce88, %ebx
+83 ec 10                      sub $0x10, %esp
+0f 85 6d 01 00 00             jnz 0x805c300
+0f 87 a9 00 00 00             jnbe 0x805c248
+e9 50 ff ff ff                jmp 0x805c1a6
+0f 82 72 01 00 00             jb 0x805c320
+upointer
+8b 55 f4                      movl  -0xc(%ebp), %edx
+89 50 04                      movl  %edx, 0x4(%eax)
+8b 40 04                      movl  0x4(%eax), %eax
+85 c0                         test %eax, %eax
+0f 95 c0                      setnz %al
+84 c0                         test %al, %al
+75 d4                         jnz 0x8048a80
+e8 d3 fe ff ff                calll  0x804895f
+8b 50 04                      movl  0x4(%eax), %edx
+89 50 08                      movl  %edx, 0x8(%eax)
+8b 40 08                      movl  0x8(%eax), %eax
+c3                            retl  
+e8 f4 6f 00 00                calll  0x804fa90
+e8 ea 8c ff ff                calll  0x8048780
+8b 1c 24                      movl  (%esp), %ebx
+c3                            retl  
+81 c3 6a 95 08 00             add $0x8956a, %ebx
+83 ec 08                      sub $0x8, %esp
+8d 44 24 14                   leal  0x14(%esp), %eax
+83 ec 04                      sub $0x4, %esp
+upointer
+8b 55 f4                      movl  -0xc(%ebp), %edx
+89 50 08                      movl  %edx, 0x8(%eax)
+8b 40 08                      movl  0x8(%eax), %eax
+85 c0                         test %eax, %eax
+74 0e                         jz 0x80488d4
+8b 40 08                      movl  0x8(%eax), %eax
+eb 09                         jmp 0x80488dd
+74 15                         jz 0x8048905
+upointer
+8b 55 f4                      movl  -0xc(%ebp), %edx
+89 50 04                      movl  %edx, 0x4(%eax)
+8b 40 04                      movl  0x4(%eax), %eax
+85 c0                         test %eax, %eax
+0f 95 c0                      setnz %al
+84 c0                         test %al, %al
+75 d4                         jnz 0x8048a80
+e8 d3 fe ff ff                calll  0x804895f
+8b 50 04                      movl  0x4(%eax), %edx
+89 50 08                      movl  %edx, 0x8(%eax)
+8b 40 08                      movl  0x8(%eax), %eax
+c3                            retl  
+e8 f4 6f 00 00                calll  0x804fa90
+e8 ea 8c ff ff                calll  0x8048780
+8b 1c 24                      movl  (%esp), %ebx
+c3                            retl  
+81 c3 6a 95 08 00             add $0x8956a, %ebx
+83 ec 08                      sub $0x8, %esp
+8d 44 24 14                   leal  0x14(%esp), %eax
+83 ec 04                      sub $0x4, %esp
+upointer
+8b 55 f4                      movl  -0xc(%ebp), %edx
+89 50 08                      movl  %edx, 0x8(%eax)
+8b 40 08                      movl  0x8(%eax), %eax
+8b 40 08                      movl  0x8(%eax), %eax
+upointer
+8b 45 f4                      movl  -0xc(%ebp), %eax
+89 44 24 6c                   movl  %eax, 0x6c(%esp)
+8b 44 24 6c                   movl  0x6c(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 44 24 6c                   movl  0x6c(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 44 24 6c                   movl  0x6c(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 44 24 6c                   movl  0x6c(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 44 24 6c                   movl  0x6c(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+upointer
+8b 44 24 6c                   movl  0x6c(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+upointer
+8b 44 24 6c                   movl  0x6c(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+upointer
+8b 44 24 6c                   movl  0x6c(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+upointer
+8b 44 24 6c                   movl  0x6c(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+upointer
+8b 44 24 6c                   movl  0x6c(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+upointer
+8b 44 24 6c                   movl  0x6c(%esp), %eax
+89 04 24                      movl  %eax, (%esp)
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
+8b 45 08                      movl  0x8(%ebp), %eax
