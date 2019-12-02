@@ -1,6 +1,7 @@
 import re
 import numpy as np
 
+'''
 def readRaw(filename):
   with open(filename, 'r') as f:
     raw = f.read()
@@ -27,10 +28,50 @@ def extractOpcode(raw):
   for line in raw:
     codes.append(re.findall(r'\t(.+)\t', line))
   return codes
+'''
 
+import glob
+
+def readRaw(dirs):
+  fns = glob.glob(dirs+'*.out')
+  labels = []
+  seqs = []
+  codes = []
+  _tmp_seq = []
+  _tmp_code = []
+  for fn in fns:
+    with open(fn, 'r') as f:
+      raw = f.read()
+      for line in raw.split('\n'):
+        if len(line) == 0:
+          continue
+        if line.find('  ') == -1:
+           if len(_tmp_seq) != 0 or len(_tmp_code) != 0:
+              seqs.append(_tmp_seq)
+              codes.append(_tmp_code)
+           _tmp_seq = []
+           _tmp_code = []
+           labels.append(line)
+        elif len(line) < 30:
+           continue
+        else:
+           seq = [i.strip(' ') for i in re.findall(r'((?:[a-z0-9]{2}\ ){1,})',line[:30])]
+           _tmp_seq.extend(seq)
+           _tmp_code.append(re.findall(r'([^ ]+) ',line[30:])[0])
+  if len(_tmp_seq) != 0 or len(_tmp_code) != 0:
+     seqs.append(_tmp_seq)
+     codes.append(_tmp_code)
+  return labels, seqs, codes
+
+import os
+import pickle
 def Lan_features(filename):
-  raw  = readRaw(filename)
-  return extractAssemblyCode(raw), extractLabel(raw)
+  if os.path.exists('features.b'):
+    labels, seqs, codes = pickle.load(open('features.b','rb'))
+  else:
+    labels, seqs, codes  = readRaw(filename)
+    pickle.dump((labels, seqs, codes),open('features.b','wb'))
+  return seqs, codes, labels#extractAssemblyCode(raw), extractLabel(raw)
 
 def padding_feature(seqs, length, sub_length, end_token):
   end_token = '{:08b}'.format(int(end_token,16))
@@ -55,4 +96,6 @@ def padding_feature(seqs, length, sub_length, end_token):
   return newseqs
 
 if __name__ == '__main__':
-  print(Lan_features('/home/lfz5092/Lan/IST597/VariableTypeClarify/classification/data/rawdata.txt'))
+  #print(Lan_features('/home/lfz5092/Lan/IST597/VariableTypeClarify/classification/data/rawdata.txt'))
+  print(readRaw('/home/lfz5092/Lan/IST597/VariableTypeClarify/classification/data/'))
+

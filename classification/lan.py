@@ -91,7 +91,6 @@ class VariableType(tf.keras.Model):
         outputs = self.dropout_layer1(outputs, training = training)
         outputs = self.layernorm1(outputs)
         #outputs = tf.cond(self.use_dropout, lambda: self.dropout_layer(outputs), lambda: outputs)
-        print(outputs)
         outputs = self.attention(outputs)
         outputs = self.dropout_layer2(outputs, training = training)
         outputs = self.layernorm2(outputs)
@@ -113,7 +112,6 @@ class VariableType(tf.keras.Model):
             self.train_accuracy(y_true, pred)
 
         def cal_grad():
-            print('calculating gradient...')
             gradients = tape.gradient(loss, self.trainable_variables)    
             self.opt.apply_gradients(zip(gradients, self.trainable_variables))
             return logits, loss, pred
@@ -138,16 +136,14 @@ def load_ckpt(model, path):
         print ('Latest checkpoint restored!!')
     return ckpt, ckpt_manager
 
+from sklearn.metrics import accuracy_score
 def test(test_img, test_lab, path):
     vt_model = VariableType()
     ckpt, ckpt_manager = load_ckpt(vt_model, path)   
-    test_img = tf.cast(test_img, dtype=tf.float32)
-    test_lab = tf.cast(test_lab, dtype=tf.float32) 
     test_ds = tf.data.Dataset.from_tensor_slices((test_img, test_lab)).batch(config['batch_size'],drop_remainder=True)
     for inputs, outputs in test_ds:
         logits, loss, pred = vt_model(inputs, outputs, False)
-        print(pred)
-    print(test_lab)
+    print(vt_model.train_accuracy.result())    
 
 def train(train_images, train_labels, test_img, test_lab, path):
     vt_model = VariableType()
@@ -168,24 +164,31 @@ def train(train_images, train_labels, test_img, test_lab, path):
     time_taken = time.time() - time_start
     print('\nTotal time taken (in seconds): {:.2f}'.format(time_taken))
     
-def readData():
-    train_seqs, train_labels = utils.Lan_features(config['input'])
-    train_seqs = utils.padding_feature(train_seqs, config['instruction_number'], config['instruction_length'], '90')
-    test_seqs, test_labels = utils.Lan_features(config['valid'])
-    test_seqs = utils.padding_feature(test_seqs, config['instruction_number'], config['instruction_length'], '90')
-    print(test_seqs, test_labels )
-    if len(train_seqs) % config['batch_size'] != 0:
-        rand = [random.randint(0,len(train_seqs)-1) for i in range(config['batch_size'] - len(train_seqs) % config['batch_size'])]
-        for r in rand:
-            train_seqs.append(train_seqs[r])
-            train_labels = np.append(train_labels,train_labels[r])
-    if len(test_seqs) % config['batch_size'] != 0:
-        rand = [random.randint(0,len(test_seqs)-1) for i in range(config['batch_size'] - len(test_seqs) % config['batch_size'])]
-        for r in rand:
-            test_seqs.append(test_seqs[r])
-            test_labels = np.append(test_labels,test_labels[r])
-    return train_seqs, train_labels, test_seqs, test_labels 
 
+import pickle
+from sklearn.model_selection import train_test_split                                                      
+import os                                                                                                   
+def readData():
+  fn = 'all_data.b'
+  if os.path.exists(fn):                                                                          
+    labels, seqs, codes = pickle.load(open(fn,'rb'))                                              
+  else:                                                                                                     
+    seqs, codes ,labels = utils.Lan_features(config['input'])
+    print(len(labels),len(seqs))
+    seqs = utils.padding_feature(seqs, config['instruction_number'], config['instruction_length'], '90')
+    pickle.dump((labels, seqs, codes),open(fn,'wb'))       
+  lookupTable, labels = np.unique(np.array(labels), return_inverse=True)                                                                      
+  pickle.dump(lookupTable, open('lookuptable','wb'))   
+  train_seqs, test_seqs, train_labels, test_labels = train_test_split(seqs, labels, test_size=0.3)      
+  return train_seqs, train_labels, test_seqs, test_labels 
+
+##baseline
 train_seqs, train_labels, test_seqs, test_labels = readData()
+_train_seqs = np.reshape(np.array(train_seqs),(len(train_labels),-1))
+_test_seqs = np.reshape(np.array(test_seqs),(len(test_labels),-1))
+from sklearn.ensemble import RandomForestClassifier
+clf = RandomForestClassifier(n_estimators=100,max_depth=3)
+print(clf.fit(_train_seqs,train_labels).score(_test_seqs, test_labels))
+#Lan Model
 train(train_seqs, train_labels, test_seqs, test_labels, config['save_path'])
 test(test_seqs, test_labels, config['save_path'])
