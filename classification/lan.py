@@ -136,14 +136,28 @@ def load_ckpt(model, path):
         print ('Latest checkpoint restored!!')
     return ckpt, ckpt_manager
 
+
+from sklearn.metrics import roc_auc_score
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import f1_score
+def allresult(pred, y):
+  print('auc', roc_auc_score(y, pred))
+  print('acc', accuracy_score(y, pred))
+  print('f1', f1_score(y, pred, average=None))
+
 from sklearn.metrics import accuracy_score
 def test(test_img, test_lab, path):
     vt_model = VariableType()
     ckpt, ckpt_manager = load_ckpt(vt_model, path)   
     test_ds = tf.data.Dataset.from_tensor_slices((test_img, test_lab)).batch(config['batch_size'],drop_remainder=True)
+    all_pred = []
+    all_y = []
     for inputs, outputs in test_ds:
         logits, loss, pred = vt_model(inputs, outputs, False)
-    print(vt_model.train_accuracy.result())    
+        all_pred.extend(pred)
+        all_y.extend(outputs)
+    allresult(all_pred, all_y)
+    #print(vt_model.train_accuracy.result())    
 
 def train(train_images, train_labels, test_img, test_lab, path):
     vt_model = VariableType()
@@ -182,6 +196,7 @@ def readData():
   train_seqs, test_seqs, train_labels, test_labels = train_test_split(seqs, labels, test_size=0.3)      
   return train_seqs, train_labels, test_seqs, test_labels 
 
+
 ##baseline
 train_seqs, train_labels, test_seqs, test_labels = readData()
 _train_seqs = np.reshape(np.array(train_seqs),(len(train_labels),-1))
@@ -189,6 +204,7 @@ _test_seqs = np.reshape(np.array(test_seqs),(len(test_labels),-1))
 from sklearn.ensemble import RandomForestClassifier
 clf = RandomForestClassifier(n_estimators=100,max_depth=3)
 print(clf.fit(_train_seqs,train_labels).score(_test_seqs, test_labels))
+print(allresult(clf.fit(_train_seqs,train_labels), test_labels))
 #Lan Model
 train(train_seqs, train_labels, test_seqs, test_labels, config['save_path'])
 test(test_seqs, test_labels, config['save_path'])
