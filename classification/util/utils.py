@@ -95,6 +95,52 @@ def padding_feature(seqs, length, sub_length, end_token):
   assert max_sub_length <= sub_length
   return newseqs
 
+from sklearn.metrics import roc_auc_score
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import f1_score
+from sklearn.metrics import roc_curve
+from sklearn.metrics import auc
+def allresult(pred, y, logits):
+    #print(pred)
+    #print(y)
+    #print(logits)
+    #print(len(pred),len(y),len(logits))
+    print('acc', accuracy_score(y, pred))
+    print('f1', f1_score(y, pred, average='micro'))
+    fpr, tpr, roc_auc = cal_roc(np.array(logits), y)
+    print('auc', roc_auc)
+    return fpr, tpr, roc_auc
+
+from sklearn.preprocessing import OneHotEncoder
+def cal_roc(prediction, all_labels):
+    fpr = dict()
+    tpr = dict()
+    roc_auc = dict()
+    enc = OneHotEncoder()
+    all_labels = enc.fit_transform(np.array(all_labels).reshape(-1,1)).toarray()
+    #print(all_labels, prediction)
+    for i in range(config['class_num']): 
+        fpr[i], tpr[i], _ = roc_curve(all_labels[:, i], prediction[:, i]) 
+        roc_auc[i] = auc(fpr[i], tpr[i])
+
+    #fpr['macro'], tpr['macro'] = roc_curve(all_labels[:,0:2], prediction)
+    fpr['micro'], tpr['micro'],_ = roc_curve(all_labels.ravel(), prediction.ravel())
+    roc_auc['micro'] = auc(fpr['micro'], tpr['micro'])
+    return fpr, tpr, roc_auc
+
+def savefig(data, cn = 1):
+     plt.rcParams['savefig.dpi'] = 600
+     plt.rcParams['figure.dpi'] = 600
+     plt.clf()
+     colors = ["cornflowerblue","lightslategrey"]
+     for color, d in zip(colors, data):
+         fpr,tpr,auc,label = d[0],d[1],d[2],d[3]
+         plt.plot(fpr[cn], tpr[cn], color = color, label=(label+"(area=%0.2f)") % auc[cn])
+     plt.legend(loc="lower right")
+     plt.xlabel('False Positive Rate')
+     plt.ylabel('True Positive Rate')
+     plt.savefig('roc'+str(cn)+'.pdf', dpi=600)
+
 if __name__ == '__main__':
   #print(Lan_features('/home/lfz5092/Lan/IST597/VariableTypeClarify/classification/data/rawdata.txt'))
   print(readRaw('/home/lfz5092/Lan/IST597/VariableTypeClarify/classification/data/'))
