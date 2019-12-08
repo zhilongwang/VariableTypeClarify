@@ -1,3 +1,6 @@
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 print(tf.__version__)
@@ -136,28 +139,47 @@ def load_ckpt(model, path):
         print ('Latest checkpoint restored!!')
     return ckpt, ckpt_manager
 
+import pickle
+from sklearn.model_selection import train_test_split                                                      
+import os                                                                                                   
+def readData():
+  fn = 'all_data.b'
+  if os.path.exists(fn):    
+    print(fn)                                                                      
+    train_seqs, test_seqs, train_labels, test_labels = pickle.load(open(fn,'rb'))                                              
+    print(fn)
+  else:                                                                                                     
+    seqs, codes ,labels = utils.Lan_features(config['input'])
+    print(len(labels),len(seqs))
+    seqs = utils.padding_feature(seqs, config['instruction_number'], config['instruction_length'], '90')
+    #pickle.dump((labels, seqs, codes),open(fn,'wb'))       
+    lookupTable, labels = np.unique(np.array(labels), return_inverse=True)                                                                      
+    pickle.dump(lookupTable, open('lookuptable','wb'))   
+    train_seqs, test_seqs, train_labels, test_labels = train_test_split(seqs, labels, test_size=0.3)      
+    pickle.dump((train_seqs, test_seqs, train_labels, test_labels), open(fn,'wb'))  
+  return train_seqs, train_labels, test_seqs, test_labels 
 
-from sklearn.metrics import roc_auc_score
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import f1_score
-def allresult(pred, y):
-  print('auc', roc_auc_score(y, pred))
-  print('acc', accuracy_score(y, pred))
-  print('f1', f1_score(y, pred, average=None))
 
-from sklearn.metrics import accuracy_score
+##baseline
+train_seqs, train_labels, test_seqs, test_labels = readData()
+_train_seqs = np.reshape(np.array(train_seqs),(len(train_labels),-1))
+_test_seqs = np.reshape(np.array(test_seqs),(len(test_labels),-1))
+
+
+
 def test(test_img, test_lab, path):
     vt_model = VariableType()
     ckpt, ckpt_manager = load_ckpt(vt_model, path)   
     test_ds = tf.data.Dataset.from_tensor_slices((test_img, test_lab)).batch(config['batch_size'],drop_remainder=True)
     all_pred = []
+    all_logits = []
     all_y = []
     for inputs, outputs in test_ds:
         logits, loss, pred = vt_model(inputs, outputs, False)
-        all_pred.extend(pred)
-        all_y.extend(outputs)
-    allresult(all_pred, all_y)
-    #print(vt_model.train_accuracy.result())    
+        all_pred.extend(pred.numpy())
+        all_logits.extend(logits.numpy())
+        all_y.extend(outputs.numpy())
+    return utils.allresult(all_pred, all_y, all_logits)
 
 def train(train_images, train_labels, test_img, test_lab, path):
     vt_model = VariableType()
@@ -168,43 +190,34 @@ def train(train_images, train_labels, test_img, test_lab, path):
     train_labels = tf.cast(train_labels, dtype=tf.float32)
     test_img = tf.cast(test_img, dtype=tf.float32)
     test_lab = tf.cast(test_lab, dtype=tf.float32)
+    
+    max_auc = 0
+    res = []
     for epoch in range(config['max_epochs']):
         train_ds = tf.data.Dataset.from_tensor_slices((train_images, train_labels)).shuffle(1000, seed=epoch*(2612)).batch(config['batch_size'],drop_remainder=True)
         for inputs, outputs in train_ds:
             logits, loss, pred = vt_model(inputs, outputs, True)
-        print('Epoch {} Loss {:.4f} Accuracy {:.4f}'.format(epoch + 1, vt_model.train_loss.result(), vt_model.train_accuracy.result()))
         ckpt_manager.save()
-        test(test_img, test_lab, path)
+        fpr, tpr, roc_auc = test(test_img, test_lab, path)
+        print('Epoch {} Loss {:.4f} Accuracy {:.4f}'.format(epoch + 1, vt_model.train_loss.result(), vt_model.train_accuracy.result()))
+        if roc_auc > max_auc:
+            res = (fpr, tpr, roc_auc)
     time_taken = time.time() - time_start
     print('\nTotal time taken (in seconds): {:.2f}'.format(time_taken))
+    return res
     
 
-import pickle
-from sklearn.model_selection import train_test_split                                                      
-import os                                                                                                   
-def readData():
-  fn = 'all_data.b'
-  if os.path.exists(fn):                                                                          
-    labels, seqs, codes = pickle.load(open(fn,'rb'))                                              
-  else:                                                                                                     
-    seqs, codes ,labels = utils.Lan_features(config['input'])
-    print(len(labels),len(seqs))
-    seqs = utils.padding_feature(seqs, config['instruction_number'], config['instruction_length'], '90')
-    pickle.dump((labels, seqs, codes),open(fn,'wb'))       
-  lookupTable, labels = np.unique(np.array(labels), return_inverse=True)                                                                      
-  pickle.dump(lookupTable, open('lookuptable','wb'))   
-  train_seqs, test_seqs, train_labels, test_labels = train_test_split(seqs, labels, test_size=0.3)      
-  return train_seqs, train_labels, test_seqs, test_labels 
-
-
-##baseline
-train_seqs, train_labels, test_seqs, test_labels = readData()
-_train_seqs = np.reshape(np.array(train_seqs),(len(train_labels),-1))
-_test_seqs = np.reshape(np.array(test_seqs),(len(test_labels),-1))
-from sklearn.ensemble import RandomForestClassifier
-clf = RandomForestClassifier(n_estimators=100,max_depth=3)
-print(clf.fit(_train_seqs,train_labels).score(_test_seqs, test_labels))
-print(allresult(clf.fit(_train_seqs,train_labels), test_labels))
 #Lan Model
-train(train_seqs, train_labels, test_seqs, test_labels, config['save_path'])
-test(test_seqs, test_labels, config['save_path'])
+res = []
+#fpr, tpr, roc_auc = train(train_seqs, train_labels, test_seqs, test_labels, config['save_path'])
+fpr, tpr, roc_auc = test(test_seqs, test_labels, config['save_path'])
+res.append([fpr,tpr,roc_auc,'Model1'])
+
+# baseline
+from sklearn.ensemble import RandomForestClassifier
+clf = RandomForestClassifier(n_estimators=50,max_depth=2)
+print(clf.fit(_train_seqs,train_labels).score(_test_seqs, test_labels))
+fpr, tpr, roc_auc = utils.allresult(clf.predict(_test_seqs), test_labels, clf.predict_proba(_test_seqs))
+res.append([fpr,tpr,roc_auc,'RF'])
+pickle.dump(res, open('my_result','wb'))  
+utils.savefig(res,'micro')
